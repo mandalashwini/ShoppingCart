@@ -14,3 +14,4 @@ Rails.application.config.assets.version = '1.0'
  Rails.application.config.assets.precompile += %w( bootstrap_js/bootstrap.min.js )
  Rails.application.config.assets.precompile += %w( bootstrap_js/jquery.min.js )
  Rails.application.config.assets.precompile += %w( bootstrap_css/bootstrap.min.css )
+ Rails.application.config.assets.precompile += %w( user.css )
