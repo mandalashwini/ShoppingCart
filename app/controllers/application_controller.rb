@@ -12,9 +12,10 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
       if current_user.role.eql?("user")
           puts "hello"
-          user_index_path
+          index_path
       elsif current_user.role.eql?("admin")
-          user_index_path
+        puts "hhhhhh"
+        adminIndex_path
       end
   end
 end

@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
-  get 'user/index'
+  
 
   devise_for :users
   #devise_for :users
-  get 'home/index'
+  
+  #home_page routes
+  get '/index', to:'home#index'
   root 'home#index'
-  get 'admin/index'
-  get 'admin/login'
+
+  #admin dashboard
+  get '/adminIndex', to:'admin#index' 
+  get '/newProduct', to:'admin#newProduct'
+  post '/new_product', to:'admin#new'
+  
   end
