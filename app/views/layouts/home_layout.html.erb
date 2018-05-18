@@ -10,16 +10,16 @@
     </head>
     <body>
     <% if user_signed_in? %>
-      <%= render template: 'layouts/user/partials/_login_nav' %>  
+      <%= render template: 'layouts/partials/_login_nav' %>  
     <% else %>
-        <%= render template: 'layouts/user/partials/_navbar' %>
+        <%= render template: 'layouts/partials/_navbar' %>
     <% end %>
-          <%= render template: 'layouts/user/partials/_productsList' %>
+          <%= render template: 'layouts/partials/_productsList' %>
           <br><br><br>
-          <%= render template: 'layouts/user/partials/_searchbox' %>
+          <%= render template: 'layouts/partials/_searchbox' %>
           <br><br><br><br><br>
 
-          <%= render template: 'layouts/user/partials/_panel' %>
+          <%= render template: 'layouts/partials/_panel' %>
       <footer class="container-fluid text-center">
           <p>Online Store Copyright</p>  
           <form class="form-inline">Get deals:
