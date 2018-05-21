@@ -38,5 +38,8 @@ root 'home#index'
   put '/product_category/:id', to: 'product_categories#update',as: 'product_category'
   delete '/product_category/:id', to: 'product_categories#destroy', as: 'delete_product_category'
 
+  ####User View
+  get 'user/index', to: 'user#index', as: 'homepage'
+
 
   end
