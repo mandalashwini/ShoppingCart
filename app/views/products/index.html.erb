@@ -8,7 +8,7 @@
             <tr>
                 <td class="product-row"><%= p.product_name %></td>
                 <td class="product-row"><%= link_to 'Edit',edit_product_path(p), class: 'btn btn-primary' %></td>
-                <td class="product-row"><%= link_to 'View',list_categories_path(p), class: 'btn btn-primary' %></td>
+                <td class="product-row"><%= link_to 'View',show_categories_path(p), class: 'btn btn-primary' %></td>
                 <td class="product-row"><%= link_to 'Delete',delete_product_path(p),method: :delete, data: {confirm: 'Are You Sure?'}, class: 'btn btn-danger' %></td>
            </tr>
         <% end %>
