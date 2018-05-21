@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="card">
+        <div class="well" >
+        <%= form_for :ProductCategory, url: categories_path do |f| %>
+
+            <% if @ProductCategory.errors.any?%>
+                <% @ProductCategory.errors.full_messages.each do |msg| %>
+                    <%= msg %>
+                    <% end %>
+            <% end %>
+            Category Name <%= f.text_field :name %>
+            Price <%= f.text_field :price %>
+            Quantity<%= f.text_field :quantity %>
+            Description<%= f.text_field :description %>
+            <%= f.submit(:save, {class: 'btn btn-primary'}) %>
+            <%=link_to 'cancel', admindashboard_path, class: 'btn btn-primary'%>
+        <% end %>
+        </div>
+    </div>
+</div>

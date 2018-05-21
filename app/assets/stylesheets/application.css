@@ -13,3 +13,6 @@
  *= require_tree .
  *= require_self
  */
+ .product-row{
+     padding-right: 20%;
+ }

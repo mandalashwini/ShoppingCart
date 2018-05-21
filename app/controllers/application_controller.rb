@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
           index_path
       elsif current_user.role.eql?("admin")
         puts "hhhhhh"
-        adminIndex_path
+        admindashboard_path
       end
   end
 end
