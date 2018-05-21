@@ -10,6 +10,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
+        
+        <li><a><span>Welcome <%= current_user.firstname%></span></a></li>
         <li class="active"><a href="/user/index">Home</a></li>
         <li><a href="/users/edit"><span>Edit</span></a></li>
         <li><a href="/users/sign_out" onclick="return confirm('Are you sure?')"><span>Logout</span></a></li>

@@ -40,6 +40,6 @@ root 'home#index'
 
   ####User View
   get 'user/index', to: 'user#index', as: 'homepage'
-
+  
 
   end

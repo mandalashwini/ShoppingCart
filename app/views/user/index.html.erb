@@ -1,8 +1,12 @@
 <div class="container">
-      <div class="card">
-        <%= @product.each do |p|%>
-            <%= p.inspect %>
-            <%= link_to(p) %>
-        <% end %>
-    </div>
+        
+        <div class="row">
+            
+            <% @products.each do |p|%>
+                <div class="col-sm-3 col-md-4 col-lg-2">
+                <%= link_to "#{p.product_name}",list_categories_path(p),class: 'btn btn-primary' %>
+                </div>
+            <% end %>
+            
+        </div>    
 </div>    

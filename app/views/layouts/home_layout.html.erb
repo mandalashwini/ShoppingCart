@@ -10,16 +10,15 @@
     </head>
     <body>
     <% if user_signed_in? %>
-      <%= render template: 'layouts/partials/_login_nav' %>  
+      <%= render 'layouts/partials/login_nav' %>  
     <% else %>
-        <%= render template: 'layouts/partials/_navbar' %>
+        <%= render 'layouts/partials/navbar' %>
     <% end %>
-          <%= render template: 'layouts/partials/_productsList' %>
+          <%= yield %>
           <br><br><br>
-          <%= render template: 'layouts/partials/_searchbox' %>
+          <%= render 'layouts/partials/searchbox' %>
           <br><br><br><br><br>
-
-          <%= render template: 'layouts/partials/_panel' %>
+        
       <footer class="container-fluid text-center">
           <p>Online Store Copyright</p>  
           <form class="form-inline">Get deals:
@@ -27,6 +26,5 @@
             <button type="button" class="btn btn-danger">Sign Up</button>
           </form>
       </footer>
-
     </body>
 </html>

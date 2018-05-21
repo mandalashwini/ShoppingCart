@@ -1,20 +1,20 @@
 <div class="container">
-      <div class="card">
-        <h2><%= @product.product_name %>
-        <%= link_to 'New Category', new_category_path(@product),class: 'btn btn-primary'%></h2>
-        <%if @product.product_categories.empty?%>
-            <p>No List Found</p>
-        <% else %>
-                <% @product.product_categories.each do |c|%>
-                    <div class="well">
-                        <h3><%= c.name %></h3>
-                        <p>Price <%= c.price %></p>
-                        <p>Quantity <%= c.quantity %></p>
-                        <p>Description <%= c.description %></p>
-                        <p><%= link_to 'Edit', edit_product_category_path(c), class: 'btn btn-primary' %>
-                        <%= link_to 'Delete', delete_product_category_path(c),method: :delete, data: {confirm: 'Are You Sure?'}, class: 'btn btn-danger' %></p>
-                    </div>
-                <% end %>
-        <% end %>
-    </div>
+            <h2><%= @product.product_name %>
+            <%= link_to 'New Category', new_category_path(@product),class: 'btn btn-primary'%></h2>
+            <%if @product.product_categories.empty?%>
+                <p>No List Found</p>
+            <% else %>
+                    <% @product.product_categories.each do |c|%>
+                            <div class="col-sm-3 col-md-4 col-lg-4">
+                            <div class="well">
+                                <h3><%= c.name %></h3>
+                                <p>Price <%= c.price %></p>
+                                <p>Quantity <%= c.quantity %></p>
+                                <p>Description <%= c.description %></p>
+                                <p><%= link_to 'Edit', edit_product_category_path(c), class: 'btn btn-primary' %>
+                                <%= link_to 'Delete', delete_product_category_path(c),method: :delete, data: {confirm: 'Are You Sure?'}, class: 'btn btn-danger' %></p>
+                            </div>
+                            </div>
+                    <% end %>
+            <% end %>
 </div>    
