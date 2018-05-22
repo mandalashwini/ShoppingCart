@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/newProduct', to:'admin#newProduct'
   post '/new_product', to:'admin#new'
 =end
-root 'home#index'
+root 'user#index'
 
 ##Product
 
@@ -33,13 +33,13 @@ root 'home#index'
   ###product_category
   get 'products/:id/product_categories/new', to: 'product_categories#new', as: 'new_category'
   post'products/:id/product_categories', to: 'product_categories#create', as: 'categories'
-  get 'products/:id/product_categories/index', to: 'product_categories#index', as: 'show_categories'
+  get 'products/:id/product_categories/index', to: 'product_categories#index', as: 'list_categories'
   get 'product_category/:id/edit', to: 'product_categories#edit', as: 'edit_product_category'
   put '/product_category/:id', to: 'product_categories#update',as: 'product_category'
   delete '/product_category/:id', to: 'product_categories#destroy', as: 'delete_product_category'
 
   ####User View
   get 'user/index', to: 'user#index', as: 'homepage'
-  get 'user/list_categories/:id', to: 'user#list_categories', as: 'list_categories'
+  #get 'user/list_categories/:id', to: 'user#list_categories', as: 'list_categories'
   
 end
