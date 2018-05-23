@@ -1,0 +1,25 @@
+
+<% if @product.product_categories.present? %>
+	<% @product.product_categories.each do |c|%>
+	        <div class="col-sm-3 col-md-4 col-lg-4">
+	             <div class="well">
+	             	<% if c.quantity.to_i > 0 %>
+	                                <h3><%= c.name %></h3>
+	                                <p>Price <%= c.price %></p>
+	                                <p>Quantity <%= c.quantity %></p>
+	                                <p>Description <%= c.description %></p>
+	                                <p><%= link_to 'Buy',buy_item_path(c),class: 'btn btn-primary' %>
+	                                <%= link_to 'Add to Cart', class: 'btn btn-primary' %></p>
+	                  <% else %>
+	     
+		                       <p>No List Found...</p>
+	     
+	                <% end %>
+	          </div>
+	       </div>
+	<% end %>
+<% else %>
+		<div class="card">
+		     <p>No List Found...</p>
+	    </div>
+<% end %>

@@ -7,6 +7,7 @@
       <%= stylesheet_link_tag  'bootstrap_css/bootstrap.min.css' %>
       <%= javascript_include_tag 'bootstrap_js/jquery.min.js' %>
       <%= javascript_include_tag 'bootstrap_js/bootstrap.min.js' %>
+
     </head>
     <body>
     <% if user_signed_in? %>
@@ -16,15 +17,6 @@
     <% end %>
           <%= yield %>
           <br><br><br>
-          <%= render 'layouts/partials/searchbox' %>
-          <br><br><br><br><br>
-        
-      <footer class="container-fluid text-center">
-          <p>Online Store Copyright</p>  
-          <form class="form-inline">Get deals:
-            <input type="email" class="form-control" size="50" placeholder="Email Address">
-            <button type="button" class="btn btn-danger">Sign Up</button>
-          </form>
-      </footer>
+          
     </body>
 </html>

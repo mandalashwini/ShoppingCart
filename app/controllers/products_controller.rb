@@ -9,14 +9,19 @@ class ProductsController < ApplicationController
   end
 
   def create
-    #render plain: params[:product].inspect
-    @product=Product.new(product_params)
-    if  @product.save
-    flash[:notice] = "record created!!!!"
-    redirect_to admindashboard_path
-    else
-      render :new
-    end
+    #render plain: params.inspect
+      puts " result====>",product_params[:product_name]
+      if Product.already_exist?(product_params[:product_name]).present?
+          flash[:notice]="Product alredy exist!!"
+      else
+          @product=Product.new(product_params)
+          if  @product.save
+          flash[:notice] = "record created!!!!"
+          redirect_to admindashboard_path
+          else
+            render :new
+          end
+     end
   end
 
   def edit

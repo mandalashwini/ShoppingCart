@@ -4,9 +4,7 @@ class UserController < ApplicationController
     @products=Product.all
   end
   
-  def list_categories
-     response_to do |format|
-      format.js
-    end
+  def buyList
+     @product=Product.find(params[:id])
   end
 end

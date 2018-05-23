@@ -37,9 +37,9 @@ root 'user#index'
   get 'product_category/:id/edit', to: 'product_categories#edit', as: 'edit_product_category'
   put '/product_category/:id', to: 'product_categories#update',as: 'product_category'
   delete '/product_category/:id', to: 'product_categories#destroy', as: 'delete_product_category'
-
+  get 'product_category/:id',to: 'product_categories#buy_item', as: 'buy_item'
   ####User View
   get 'user/index', to: 'user#index', as: 'homepage'
-  #get 'user/list_categories/:id', to: 'user#list_categories', as: 'list_categories'
+  get 'user/buyList/:id', to: 'user#buyList', as: 'buyList'
   
 end

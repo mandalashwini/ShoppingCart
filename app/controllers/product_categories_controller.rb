@@ -40,6 +40,16 @@ class ProductCategoriesController < ApplicationController
         @product_category.destroy
         redirect_to list_categories_path
       end
+
+      def buy_item
+          @product_category=ProductCategory.find(params[:id])
+          #render plain: params.inspect
+            
+          @product_category.update(quantity: (@product_category.quantity.to_i) - 1)
+          #render :nothing => true
+          redirect_to :back
+      end
+
       private
       def category_params
         params.require(:ProductCategory).permit(:name,:price,:quantity,:description)

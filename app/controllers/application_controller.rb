@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
       if current_user.role.eql?("user")
           puts "hello"
-          index_path
+          homepage_path
       elsif current_user.role.eql?("admin")
         puts "hhhhhh"
         admindashboard_path

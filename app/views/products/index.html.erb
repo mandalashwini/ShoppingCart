@@ -1,7 +1,6 @@
-
 <div class="container">
       <div class="card">
-      <%= link_to 'New Product', new_product_path,class: 'btn btn-primary'%>
+<%= link_to 'New Product', new_product_path,class: 'btn btn-primary', id: 'new_product_link'%>
         <h1>Product</h1>
         <table>
         <% @products.each do |p|%>
@@ -15,3 +14,4 @@
         </table>
  </div>
 </div>
+

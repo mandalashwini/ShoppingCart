@@ -1,15 +1,11 @@
 <div class="container">
       <div class="card">
     <%= form_for :product, url: product_path(@product), method: :put do |f| %>
-
-        <% if @product.errors.any?%>
-            <% @product.errors.full_messages.each do |msg| %>
-                <%= msg %>
-                <% end %>
-        <% end %>
-        Product Name <%= f.text_field :product_name%>
-        <%= f.submit(:edit, {class: 'btn btn-primary'}) %>
-        <%=link_to 'cancel', admindashboard_path, class: 'btn btn-primary'%>
+            <%= render partial: "products/form", locals: {f: f} %>
     <% end %>
     </div>
 </div>
+
+
+
+
