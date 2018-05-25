@@ -43,20 +43,7 @@ class ProductCategoriesController < ApplicationController
         redirect_to list_categories_path
       end
 
-      def buy_item
-          @product_category=ProductCategory.find(params[:id])
-         # render plain: params.inspect
-         unless user_signed_in?
-          redirect_to new_user_session_path
-            #render :nothing => true
-         end
-
-        if user_signed_in?
-          @product_category.update(quantity: (@product_category.quantity.to_i) - 1)
-          redirect_to :back
-        end
-
-      end
+      
 
       private
       def category_params

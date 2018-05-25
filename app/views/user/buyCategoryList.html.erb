@@ -7,7 +7,7 @@
 	                                <h3><%= c.name %></h3>
 	                                <p>Price <%= c.price %></p>
 	                                <p>Description <%= c.description %></p>
-	                                <p><%= link_to 'Buy',buy_item_path(c) %></p>
+	                                <p><%= link_to 'Buy',buy_item_path(c), data: {confirm: 'Are You Sure?'} %></p>            
 	            	     </div>
 	       			</div>
 	                  <% else %>
