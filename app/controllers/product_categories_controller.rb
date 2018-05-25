@@ -49,7 +49,7 @@ class ProductCategoriesController < ApplicationController
          if user_signed_in?
           @product_category.update(quantity: (@product_category.quantity.to_i) - 1)
           #render :nothing => true
-        elses
+        else
           redirect_to new_user_session_path
          end
           redirect_to :back
