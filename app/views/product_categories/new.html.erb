@@ -1,35 +1,9 @@
 <div class="container">
     <div class="card">
-        <div class="row">
             <h2>Add Catergory</h2>
             <%= form_for :ProductCategory, url: categories_path do |f| %>
 
-            <% if @ProductCategory.errors.any?%>
-                <% @ProductCategory.errors.full_messages.each do |msg| %>
-                    <%= msg %>
-                    <% end %>
-            <% end %>
-            <div class="input-group">
-             <%= f.label :'Category Name'%><br>
-             <%= f.text_field :name %>
-            </div>
-            <div class="input-group">
-            <%= f.label :'Price'%><br>
-            <%= f.text_field :price %>
-            </div>
-            <div class="input-group">
-            <%= f.label :'Quantity'%><br>
-            <%= f.text_field :quantity %>
-            </div>
-            <div class="input-group">
-            <%= f.label :'Description'%><br>
-            <%= f.text_field :description %>
-            </div>
-            <div class="input-group">
-            <%= f.submit(:save, {class: 'btn btn-primary'}) %>
-            <%=link_to 'cancel', admindashboard_path, class: 'btn btn-primary'%>
-            </div>
+            <%= render partial: 'product_categories/partials/category_form', locals: {f: f }%>           
         <% end %>
-        </div>
     </div>
 </div>

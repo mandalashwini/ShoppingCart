@@ -10,10 +10,6 @@ class ProductsController < ApplicationController
 
   def create
     #render plain: params.inspect
-      puts " result====>",product_params[:product_name]
-      if Product.already_exist?(product_params[:product_name]).present?
-          flash[:notice]="Product alredy exist!!"
-      else
           @product=Product.new(product_params)
           if  @product.save
           flash[:notice] = "record created!!!!"
@@ -21,7 +17,7 @@ class ProductsController < ApplicationController
           else
             render :new
           end
-     end
+    
   end
 
   def edit

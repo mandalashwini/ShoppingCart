@@ -16,20 +16,22 @@ class ProductCategoriesController < ApplicationController
       end
 
       def index
-        @product=Product.find(params[:id])
+        #render plain: params.inspect 
+       @product=Product.find(params[:id])
       end
 
 
       def edit
-        @product_category=ProductCategory.find(params[:id])
+        #render plain: params[:id].inspect
+       @ProductCategory=ProductCategory.find(params[:id])
       end
     
       def update
-        @product_category=ProductCategory.find(params[:id])
-        render plain: params.inspect    
-        if(@product_category.update(category_params))
+        @ProductCategory=ProductCategory.find(params[:id])
+        #render plain: params.inspect    
+        if(@ProductCategory.update(category_params))
           flash[:notice] = "record updated!!!!"
-          redirect_to list_categories_path
+          redirect_to list_categories_path(@ProductCategory.product_id)
         else
           render :edit
         end
@@ -43,10 +45,13 @@ class ProductCategoriesController < ApplicationController
 
       def buy_item
           @product_category=ProductCategory.find(params[:id])
-          #render plain: params.inspect
-            
+         # render plain: params.inspect
+         if user_signed_in?
           @product_category.update(quantity: (@product_category.quantity.to_i) - 1)
           #render :nothing => true
+        elses
+          redirect_to new_user_session_path
+         end
           redirect_to :back
       end
 

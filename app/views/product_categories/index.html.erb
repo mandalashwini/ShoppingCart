@@ -11,8 +11,8 @@
                                 <p>Price <%= c.price %></p>
                                 <p>Quantity <%= c.quantity %></p>
                                 <p>Description <%= c.description %></p>
-                                <p><%= link_to 'Edit', edit_product_category_path(c), class: 'btn btn-primary' %>
-                                <%= link_to 'Delete', delete_product_category_path(c),method: :delete, data: {confirm: 'Are You Sure?'}, class: 'btn btn-danger' %></p>
+                                <p><%= link_to 'Edit', edit_product_category_path(c) %>
+                                <%= link_to 'Delete', delete_product_category_path(c), method: :delete, data: {confirm: 'Are You Sure?'} %></p>
                             </div>
                             </div>
                     <% end %>

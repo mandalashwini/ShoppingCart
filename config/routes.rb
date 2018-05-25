@@ -35,7 +35,7 @@ root 'user#index'
   post'products/:id/product_categories', to: 'product_categories#create', as: 'categories'
   get 'products/:id/product_categories/index', to: 'product_categories#index', as: 'list_categories'
   get 'product_category/:id/edit', to: 'product_categories#edit', as: 'edit_product_category'
-  put '/product_category/:id', to: 'product_categories#update',as: 'product_category'
+  put 'product_category/:id', to: 'product_categories#update',as: 'product_category'
   delete '/product_category/:id', to: 'product_categories#destroy', as: 'delete_product_category'
   get 'product_category/:id',to: 'product_categories#buy_item', as: 'buy_item'
   ####User View
