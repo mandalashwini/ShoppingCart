@@ -1,7 +1,7 @@
 class UserController < ApplicationController
   layout 'home_layout'
   def index
-    @products=Product.all
+    @products=SearchOperations.searchProduct
   end
   
   def buyCategoryList

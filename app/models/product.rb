@@ -3,4 +3,5 @@ class Product < ActiveRecord::Base
     validates :product_name, presence: true , uniqueness: true    
     
 
+    scope :product_search,-> { joins(:product_categories).where("quantity > ? ",0).uniq}
 end

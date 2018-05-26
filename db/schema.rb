@@ -11,16 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180525100452) do
+ActiveRecord::Schema.define(version: 20180526060052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "ar_internal_metadata", primary_key: "key", force: :cascade do |t|
-    t.string   "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "carts", force: :cascade do |t|
     t.date     "buy_date"
@@ -32,6 +26,12 @@ ActiveRecord::Schema.define(version: 20180525100452) do
 
   add_index "carts", ["product_category_id"], name: "index_carts_on_product_category_id", using: :btree
   add_index "carts", ["user_id"], name: "index_carts_on_user_id", using: :btree
+
+  create_table "histories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "product_categories", force: :cascade do |t|
     t.integer  "quantity"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20180525100452) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string   "name"
     t.string   "mobile_number"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
