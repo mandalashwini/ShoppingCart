@@ -1,0 +1,21 @@
+<div class="container">
+        <div class="row">
+            <% @products.each do |p|%>
+              <% if p.product_categories.present? %>
+                <div class="col-sm-3 col-md-4 col-lg-2">
+               <%= link_to "#{p.product_name}", buyCategoryList_path(p), id: 'list',class: 'btn btn-primary' %>
+                </div>
+              <% end %>
+            <% end %>
+        </div>    
+</div>    
+<%= render 'layouts/partials/searchbox' %>
+          <br><br><br><br><br>
+        
+         <footer class="container-fluid text-center">
+          <p>Online Store Copyright</p>  
+          <form class="form-inline">Get deals:
+            <input type="email" class="form-control" size="50" placeholder="Email Address">
+            <button type="button" class="btn btn-danger">Sign Up</button>
+          </form>
+</footer>

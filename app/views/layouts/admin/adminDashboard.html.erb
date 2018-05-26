@@ -1,0 +1,15 @@
+<html lang="en">
+    <head>
+      <title>Shopping Cart</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <%= stylesheet_link_tag 'user' %>
+      <%= stylesheet_link_tag  'bootstrap_css/bootstrap.min.css' %>
+      <%= javascript_include_tag 'bootstrap_js/jquery.min.js' %>
+      <%= javascript_include_tag 'bootstrap_js/bootstrap.min.js' %>
+    </head>
+    <body>
+      <%= render template: 'layouts/admin/partials/_nav' %>  
+     <%= yield%>
+    </body>
+</html>

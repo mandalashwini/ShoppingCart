@@ -1,0 +1,22 @@
+             <div class="input-group">
+                 <%= f.label :'Category Name'%><span style="color: red"><%if @ProductCategory.errors[:name].present? %>*<%=@ProductCategory.errors[:name][0]%><% end %></span><br>
+                 <%= f.text_field :name %>
+            </div>
+
+            <div class="input-group">
+                <%= f.label :'Price'%><span style="color: red"><%if @ProductCategory.errors[:price].present? %>*<%=@ProductCategory.errors[:price][0]%><% end %></span><br>
+                <%= f.text_field :price %>
+            </div>
+
+            <div class="input-group">    
+                <%= f.label :'Quantity'%><span style="color: red"><%if @ProductCategory.errors[:quantity].present? %>*<%=@ProductCategory.errors[:quantity][0]%><% end %></span><br>
+                <%= f.text_field :quantity %>
+            </div>
+            <div class="input-group">
+            <%= f.label :'Description'%><span style="color: red"><%if @ProductCategory.errors[:description].present? %>*<%=@ProductCategory.errors[:description][0]%><% end %></span><br>
+            <%= f.text_field :description %>
+            </div>
+             <div class="input-group">
+                <%= f.submit(:save) %>
+                <%=link_to 'cancel', admindashboard_path %>
+            </div>
