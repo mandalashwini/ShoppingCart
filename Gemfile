@@ -14,6 +14,7 @@ gem 'devise'
 gem 'responders'
 gem 'pry'
 gem 'kaminari'
+gem 'carrierwave'
 group :development, :test do  
   gem 'byebug'
   gem 'web-console', '~> 2.0'

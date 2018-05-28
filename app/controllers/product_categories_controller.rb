@@ -7,6 +7,10 @@ class ProductCategoriesController < ApplicationController
       def create
         @product=Product.find(params[:id])
         @ProductCategory=@product.product_categories.new(category_params)
+        if params[:img].present?
+          Image.create(product_category_id: @product_category, img: params[:img])
+          puts "success!!"
+        end
         if @ProductCategory.save
             redirect_to list_categories_path(@product)
         else
@@ -47,7 +51,7 @@ class ProductCategoriesController < ApplicationController
 
       private
       def category_params
-        params.require(:ProductCategory).permit(:name,:price,:quantity,:description)
+        params.require(:ProductCategory).permit(:name,:price,:quantity,:description,:img)
       end
 
 end
