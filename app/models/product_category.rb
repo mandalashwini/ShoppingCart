@@ -1,4 +1,5 @@
 class ProductCategory < ActiveRecord::Base
+	 mount_uploaders :images, ImageUploader
     belongs_to :product
     validates :name, presence: true, uniqueness: true
     validates :price, presence: true, numericality: {message: "allowed only numbers" }

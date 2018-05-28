@@ -18,8 +18,8 @@
             </div>
 
             <div class="input-group">
-            <%= f.label :'Upload image'%><span style="color: red"><%if @ProductCategory.errors[:description].present? %>*<%=@ProductCategory.errors[:description][0]%><% end %></span><br>
-            <%= f.file_field :img %>
+            <%= f.label :'Upload image'%><br>
+            <%= f.file_field :images , multiple: true%>
             </div>
 
              <div class="input-group">
