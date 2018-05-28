@@ -4,4 +4,5 @@ class Product < ActiveRecord::Base
     
 
     scope :product_search,-> { joins(:product_categories).where("quantity > ? ",0).uniq}
+    
 end

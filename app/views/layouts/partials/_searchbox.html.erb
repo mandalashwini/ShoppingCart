@@ -1,9 +1,17 @@
+<head>
+	<%= stylesheet_link_tag  'bootstrap_css/bootstrap.min.css' %>
+  <%= javascript_include_tag 'bootstrap_js/jquery.min.js' %>
+  <%= javascript_include_tag 'bootstrap_js/bootstrap.min.js' %>
+  <%= javascript_include_tag 'users/user' %>
+</head>
 
-<div class="input-group">
-      <input type="text" class="form-control" placeholder="Search" name="search">
+    
+      <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search" name="search" id= "search_text">
       <div class="input-group-btn">
-      <button type="button" class="btn btn-default">
-      <span class="glyphicon glyphicon-search"></span> Search
-      </button>
+           <%= submit_tag "search",id: "search_id", class: "btn btn-large btn-primary search-button" %>
       </div>
 </div>
+
+
+

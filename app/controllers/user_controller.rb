@@ -1,4 +1,5 @@
 class UserController < ApplicationController
+  protect_from_forgery with: :null_session
   layout 'home_layout'
   def index
     @products=SearchOperations.searchProduct
@@ -27,5 +28,15 @@ class UserController < ApplicationController
 
    def show_cart
    		@carts=current_user.carts
+    end
+
+    def search
+      search_data=params[:search_data]
+      search_data[0]=search_data[0].capitalize
+      categories=SearchOperations.searchCategories(search_data)
+      puts categories.class
+      respond_to do |format|
+         format.json {render json: categories}
+      end
     end
 end

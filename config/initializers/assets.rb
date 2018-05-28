@@ -11,4 +11,4 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 
  
- Rails.application.config.assets.precompile += %w( bootstrap_js/bootstrap.min.js bootstrap_js/jquery.min.js bootstrap_css/bootstrap.min.css user.css products/product.js)
+ Rails.application.config.assets.precompile += %w( bootstrap_js/bootstrap.min.js bootstrap_js/jquery.min.js bootstrap_css/bootstrap.min.css user.css products/product.js users/user.js)
