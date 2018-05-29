@@ -12,11 +12,12 @@ class SearchOperations
     	if @product_id.present?
             puts "ppp"
     		@categories=ProductCategory.find_category_by_product(@product_id)
-    	elsif @product_id.nil?
+        
+    	elsif @product_id.empty?
             puts "aaa"
+           
     		@categories=ProductCategory.find_category(search_data)
-    	else
-    		@categories=nil
+    	
     	end
     end
 end	

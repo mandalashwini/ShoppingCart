@@ -32,10 +32,11 @@ class UserController < ApplicationController
 
     def search
       search_data=params[:search_data]
-      search_data[0]=search_data[0].capitalize
-      @categories=SearchOperations.searchCategories(search_data)
+      #search_data[0]=search_data[0].capitalize
+      @categories=SearchOperations.searchCategories(search_data.downcase)
+      
       #@categories=@categories.page(params[:page]).per(3)
-      puts "result#{@categories.inspect}"
+      puts "result#{@categories.class}"
       respond_to do |format|
          format.json {render json: @categories}
          format.html { render :partial => 'product_categories/partials/search_result' ,locals: {categories: @categories} }
