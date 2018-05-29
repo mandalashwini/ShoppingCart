@@ -30,17 +30,21 @@ class UserController < ApplicationController
    		@carts=current_user.carts
     end
 
-    def search
+    def search_result
       search_data=params[:search_data]
       #search_data[0]=search_data[0].capitalize
-      @categories=SearchOperations.searchCategories(search_data.downcase)
-      
-      #@categories=@categories.page(params[:page]).per(3)
+      @categories=SearchOperations.searchCategories(search_data.downcase).paginate(page: params[:page], per_page: 2)
+     #@categories=@categories.page(params[:page]).per(3)
       puts "result#{@categories.class}"
       respond_to do |format|
          format.json {render json: @categories}
          format.html { render :partial => 'product_categories/partials/search_result' ,locals: {categories: @categories} }
       end
+
+    end
+
+    def search
+      render plain: params.inspect
 
     end
 end
