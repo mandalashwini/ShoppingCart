@@ -9,25 +9,19 @@ class UserController < ApplicationController
      @product=Product.find(params[:id])
   end
 
-  def show_category_list
-   render plain: params.inspect
-     @product_categories=ProductCategory.find(params[:id])
-     #binding.pry
-  end
-
   def buy_item
-          @product_category=ProductCategory.find(params[:id])
-         # render plain: params.inspect
+         @product_category=ProductCategory.find(params[:id])
+         #render plain: params.inspect
          unless user_signed_in?
-          redirect_to new_user_session_path
+          new_user_session_path
             #render :nothing => true
          end
 
         if user_signed_in?
-          @product_category.update!(quantity: (@product_category.quantity.to_i) - 1)
+          @product_category.update_attributes(quantity: (@product_category.quantity.to_i) - 1)
           puts "user==>#{current_user}"
           Cart.create(buy_date: Date.today, user_id: current_user.id,  product_category_id:@product_category.id)
-          redirect_to :back
+          redirect_to request.referer
         end
 
       end
@@ -37,12 +31,13 @@ class UserController < ApplicationController
     end
 
     def search_result
-      search_data=params[:search_data]
-      #search_data[0]=search_data[0].capitalize
-      @categories=SearchOperations.searchCategories(search_data.downcase)
-     #@categories=@categories.page(params[:page]).per(3)
-      puts "result#{@categories.class}"
-      redirect_to showCategoryList_path(@categories)
+      puts "12345"
+      @categories=SearchOperations.searchCategories(params[:search].downcase)
+     # @categories=@categories.page(params[:page]).per(2)
+     #@categories = Kaminari.paginate_array(@categories).page(params[:page]).per(2)
+      #puts "result#{@categories.class}"
+      #redirect_to showCategoryList_path(@categories)
+      #redirect_to :back
     end
 
     def search

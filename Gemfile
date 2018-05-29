@@ -16,7 +16,6 @@ gem 'pry'
 gem 'kaminari'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'will_paginate'
 group :development, :test do  
   gem 'byebug'
   gem 'web-console', '~> 2.0'

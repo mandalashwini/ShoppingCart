@@ -1,18 +1,17 @@
-<% cnt= 0 %>
-
-	<% @categories.each do |c|%>
-	             	<% if c.quantity.to_i > 0 %>
+<% @categories.each do |categoryObj|%>
+	<% if categoryObj.quantity && categoryObj.quantity.to_i > 0 %>
 	             	 <div class="col-sm-3 col-md-4 col-lg-4">
 	             		<div class="well">
-	                                <h3><%= c.name %></h3>
-	                                <p>Price <%= c.price %></p>
-	                                <p>Description <%= c.description %></p>
-	                                <p><%= link_to 'Buy',buy_item_path(c), data: {confirm: 'Are You Sure?'} %></p>            
+	                                <h3><%= categoryObj.name %></h3>
+	                                <p>Price <%= categoryObj.price %></p>
+	                                <p>Description <%= categoryObj.description %></p>
+	                                <p><%= link_to 'Buy',buy_item_path(categoryObj), data: {confirm: 'Are You Sure?'} %></p>            
 	            	     </div>
-	       			</div>
-	                 
-	                <% end %>
-	<% end %>
+	       			</div>	
+
+	    <% end %>
+	   
+<% end %>
 
 
-	
+		
