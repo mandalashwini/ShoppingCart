@@ -9,6 +9,12 @@ class UserController < ApplicationController
      @product=Product.find(params[:id])
   end
 
+  def show_category_list
+   render plain: params.inspect
+     @product_categories=ProductCategory.find(params[:id])
+     #binding.pry
+  end
+
   def buy_item
           @product_category=ProductCategory.find(params[:id])
          # render plain: params.inspect
@@ -33,14 +39,10 @@ class UserController < ApplicationController
     def search_result
       search_data=params[:search_data]
       #search_data[0]=search_data[0].capitalize
-      @categories=SearchOperations.searchCategories(search_data.downcase).paginate(page: params[:page], per_page: 2)
+      @categories=SearchOperations.searchCategories(search_data.downcase)
      #@categories=@categories.page(params[:page]).per(3)
       puts "result#{@categories.class}"
-      respond_to do |format|
-         format.json {render json: @categories}
-         format.html { render :partial => 'product_categories/partials/search_result' ,locals: {categories: @categories} }
-      end
-
+      redirect_to showCategoryList_path(@categories)
     end
 
     def search
@@ -48,3 +50,4 @@ class UserController < ApplicationController
 
     end
 end
+

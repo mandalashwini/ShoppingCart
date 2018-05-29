@@ -24,8 +24,8 @@ Rails.application.routes.draw do
   get 'user/index', to: 'user#index', as: 'homepage'
   get 'user/buyCategoryList/:id', to: 'user#buyCategoryList', as: 'buyCategoryList'
   get 'user/show_cart', to: 'user#show_cart', as: 'show_cart'
-  post 'user/search_result',to: 'user#search_result', as: 'search'
+  post 'user/search_result',to: 'user#search_result', as: 'search_result'
   get  'user/search', as: 'search_page'
   get 'user/:id',to: 'user#buy_item', as: 'buy_item'
-
+   #get 'user/show_category_list/:id', to: 'user#show_category_list', as: 'showCategoryList'
 end
