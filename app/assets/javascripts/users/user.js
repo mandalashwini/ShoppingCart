@@ -7,12 +7,13 @@ $(document).ready(function(){
         data: {search_data: params},
         dataType: "html",
         success: function(result){
-               console.log(JSON.stringify(result));
+              
+               console.log(result)
                $("#search-result").html(result)
 
         },
         error: function(){
-               alert("fail"); 
+               console.log("fail")
          }
 	});
 		
