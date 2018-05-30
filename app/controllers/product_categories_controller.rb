@@ -40,9 +40,19 @@ class ProductCategoriesController < ApplicationController
       end
 
       def buy_item
+<<<<<<< Updated upstream
          @product_category=ProductCategory.find(params[:id])
          unless user_signed_in?
              redirect_to new_user_session_path
+=======
+          @product_category=ProductCategory.find(params[:id])
+         # render plain: params.inspect
+         if user_signed_in?
+          @product_category.update(quantity: (@product_category.quantity.to_i) - 1)
+          #render :nothing => true
+        else
+          redirect_to new_user_session_path
+>>>>>>> Stashed changes
          end
         if user_signed_in?
             redirect_to ProductCategory_path(@product_category)
