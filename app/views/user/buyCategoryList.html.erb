@@ -1,0 +1,23 @@
+<% cnt= 0 %>
+<% if @product.product_categories.present? %>
+	<% @product.product_categories.each do |c|%>
+	             	<% if c.quantity.to_i > 0 %>
+	             	 <div class="col-sm-3 col-md-4 col-lg-4">
+	             		<div class="well">
+	                                <h3><%= c.name %></h3>
+	                                <p>Price <%= c.price %></p>
+	                                <p>Description <%= c.description %></p>
+	                                <p><%= link_to 'Buy',buy_item_path(c), data: {confirm: 'Are You Sure?'} %></p>            
+	            	     </div>
+	       			</div>
+	                  <% else %>
+	                     <% cnt = cnt + 1%>
+	                <% end %>
+	<% end %>
+<% end %>
+<% if cnt == @product.product_categories.length %>
+	<div class="well">
+     <p>No List Found...</p>
+ </div>
+<% end %>
+	

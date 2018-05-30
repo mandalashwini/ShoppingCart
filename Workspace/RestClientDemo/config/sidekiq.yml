@@ -1,0 +1,13 @@
+:logfile: ./log/response_log.log
+
+:concurrency: 20
+:queues:
+  - default
+  - schedule_time_zone_emails
+  - send_daily_emails_cron
+  - schedule_cron
+  - email_sequence_batch
+  - gmail_webhook
+  - import_csv
+  - high
+      

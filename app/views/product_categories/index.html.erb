@@ -1,0 +1,24 @@
+<div class="container">
+            <h2><%= @product.product_name %>
+            <%= link_to 'New Category', new_category_path(@product),class: 'btn btn-primary'%></h2>
+            <%if @product.product_categories.empty?%>
+                <p>No List Found</p>
+            <% else %>
+                    <% @product.product_categories.each do |category|%>
+                            <div class="col-sm-3 col-md-4 col-lg-4">
+                            <div class="well">
+                                <h3><%= category.name %></h3>
+                                
+                                <% category.images.each do |c|%>
+                                <%= image_tag(c.url , alt: 'Image') %>
+                                <% end %>
+                                <p>Price <%= category.price %></p>
+                                <p>Quantity <%= category.quantity %></p>
+                                <p>Description <%= category.description %></p>
+                                <p><%= link_to 'Edit', edit_product_category_path(category) %>
+                                <%= link_to 'Delete', delete_product_category_path(category), method: :delete, data: {confirm: 'Are You Sure?'} %></p>
+                            </div>
+                            </div>
+                    <% end %>
+            <% end %>
+</div>    

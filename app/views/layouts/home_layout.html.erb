@@ -1,0 +1,31 @@
+<html lang="en">
+    <head>
+      <title>Shopping Cart</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>  
+      <%= stylesheet_link_tag 'user' %>
+      <%= stylesheet_link_tag  'bootstrap_css/bootstrap.min.css' %>
+      <%= javascript_include_tag 'bootstrap_js/jquery.min.js' %>
+      <%= javascript_include_tag 'bootstrap_js/bootstrap.min.js' %>
+
+    </head>
+    <body>
+      
+    <% if user_signed_in? %>
+      <%= render 'layouts/partials/login_nav' %>  
+    <% else %>
+        <%= render 'layouts/partials/navbar' %>
+    <% end %>
+   
+          <%= yield %>
+          <div class= "flash-messages" >
+           <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+          </div>
+
+          <br><br><br>
+          
+    </body>
+</html>

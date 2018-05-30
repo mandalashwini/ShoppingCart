@@ -1,0 +1,12 @@
+<div class="container">
+      <div class="card">
+       <h1>My Cart</h1>
+       <% @carts.each do |c|%>
+            <% @product_category=ProductCategory.find(c.product_category_id)%>
+            <b><%=@product_category.name %></b><br/>
+            Price:- <%=@product_category.price %><br/>
+            Buy Date:- <%=c.buy_date%><br/><hr>
+        <% end %>
+ </div>
+</div>
+

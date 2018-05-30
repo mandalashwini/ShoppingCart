@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="card">
+            <h2>Add Catergory</h2>
+            <%= form_for :ProductCategory, url: categories_path do |f| %>
+
+            <%= render partial: 'product_categories/partials/category_form', locals: {f: f }%>           
+        <% end %>
+    </div>
+</div>

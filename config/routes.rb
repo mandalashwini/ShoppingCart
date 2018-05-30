@@ -1,56 +1,34 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  devise_for :users
+  root 'user#index'
+##Product
+  get 'products/index', to: 'products#index', as: 'admindashboard'
+  get 'products/new', to: 'products#new', as: 'new_product'
+  post 'products', to: 'products#create'
+  get 'products/:id',to: 'products#show', as: 'product' 
+  get 'products/:id/edit', to: 'products#edit', as: 'edit_product'
+  put '/products/:id', to: 'products#update'
+  delete '/products/:id', to: 'products#destroy', as: 'delete_product'
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  ###product_category
+  get 'products/:id/product_categories/new', to: 'product_categories#new', as: 'new_category'
+  post'products/:id/product_categories', to: 'product_categories#create', as: 'categories'
+  get 'products/:id/product_categories/index', to: 'product_categories#index', as: 'list_categories'
+  delete '/product_category/:id', to: 'product_categories#destroy', as: 'delete_product_category'
+  get 'product_category/:id/edit', to: 'product_categories#edit', as: 'edit_product_category'
+  put 'product_category/:id', to: 'product_categories#update',as: 'product_category'
+   get 'product_category/buy_item/:id',to: 'product_categories#buy_item', as: 'buy_item'
+   get 'product_category/confirm/:id', to: 'product_categories#buy_confirmation', as: 'buy_confirm'
+   get 'product_category/:id',to: 'product_categories#show', as: 'ProductCategory' 
+  ####User View
+  get 'user/index', to: 'user#index', as: 'homepage'
+  get 'user/buyCategoryList/:id', to: 'user#buyCategoryList', as: 'buyCategoryList'
+  get 'user/show_cart', to: 'user#show_cart', as: 'show_cart'
+ 
+  #get  'user/search', as: 'search_page'
+ 
+  post 'user/search_result',to: 'user#search_result', as: 'search_result'
+   #get 'user/show_category_list/:id', to: 'user#show_category_list', as: 'showCategoryList'
 end
