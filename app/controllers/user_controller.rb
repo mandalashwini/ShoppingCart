@@ -25,7 +25,6 @@ class UserController < ApplicationController
           #redirect_to request.referer
           redirect_to :back
         end
-          
       end
 
    def show_cart
