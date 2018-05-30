@@ -19,14 +19,15 @@ Rails.application.routes.draw do
   delete '/product_category/:id', to: 'product_categories#destroy', as: 'delete_product_category'
   get 'product_category/:id/edit', to: 'product_categories#edit', as: 'edit_product_category'
   put 'product_category/:id', to: 'product_categories#update',as: 'product_category'
-    
+  get 'product_category/:id',to: 'product_categories#show', as: 'ProductCategory' 
+   get 'product_category/buy_item/:id',to: 'product_categories#buy_item', as: 'buy_item'
   ####User View
   get 'user/index', to: 'user#index', as: 'homepage'
   get 'user/buyCategoryList/:id', to: 'user#buyCategoryList', as: 'buyCategoryList'
   get 'user/show_cart', to: 'user#show_cart', as: 'show_cart'
  
   #get  'user/search', as: 'search_page'
-  get 'user/buy_item/:id',to: 'user#buy_item', as: 'buy_item'
+ 
   post 'user/search_result',to: 'user#search_result', as: 'search_result'
    #get 'user/show_category_list/:id', to: 'user#show_category_list', as: 'showCategoryList'
 end

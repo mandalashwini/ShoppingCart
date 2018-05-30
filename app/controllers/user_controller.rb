@@ -23,7 +23,7 @@ class UserController < ApplicationController
           puts "user==>#{current_user}"
           Cart.create(buy_date: Date.today, user_id: current_user.id,  product_category_id:@product_category.id)
           #redirect_to request.referer
-          redirect_to :back
+           redirect_to ProductCategory(@product_category)
         end
       end
 
@@ -34,11 +34,6 @@ class UserController < ApplicationController
     def search_result
       puts "12345"
       @categories=SearchOperations.searchCategories(params[:search].downcase)
-     # @categories=@categories.page(params[:page]).per(2)
-     #@categories = Kaminari.paginate_array(@categories).page(params[:page]).per(2)
-      #puts "result#{@categories.class}"
-      #redirect_to showCategoryList_path(@categories)
-      #redirect_to :back
     end
 
     def search
