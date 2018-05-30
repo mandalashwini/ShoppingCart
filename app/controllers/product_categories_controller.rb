@@ -1,5 +1,6 @@
 class ProductCategoriesController < ApplicationController
         layout 'home_layout'
+        DELIVERY_CHARGES = 100
     def new
         @ProductCategory=ProductCategory.new
       end
@@ -74,10 +75,34 @@ class ProductCategoriesController < ApplicationController
       end
 
       def buy_confirmation
-        render plain: params.inspect
-        
+        #render plain: params[:confirm][:quantity].to_i.inspect
+        @product_category=ProductCategory.find(params[:id])
+        @quantity=params[:confirm][:quantity].to_i
+        if @quantity > @product_category.quantity
+          flash[:notice]="to many orders.."
+          redirect_to :back
+      else
+        @product_category.quantity = (@product_category.quantity.to_i) - @quantity
+        #@product_category.update_attributes!(quantity: (@product_category.quantity.to_i) - 1)
+        @product_category.save!
+        @Net_price = calculate_total_bill(@product_category,@quantity)
+        Order.create(buy_date: Date.today, user_id: current_user.id, total_price: @Net_price, delivery_charges: DELIVERY_CHARGES )
+        #@cart = Hash.new
+        #@cart = {buy_date: Date.today, user_id: current_user.id,  product_category_id:@product_category.id}
+        flash[:notice] = "Thank You for being with Us!!"
+        redirect_to homepage_path
       end
+   end
 
+   def calculate_total_bill(product_category,quantity)
+  
+      total_amount=product_category.price * quantity
+      gst = product_category.GST.to_i
+      gst_amount= ( total_amount * gst ) / 100
+      @Net_price = total_amount + gst_amount
+    
+   end
+  
       private
       def category_params
         params.require(:ProductCategory).permit(:name,:price,:quantity,:description,{images: []})

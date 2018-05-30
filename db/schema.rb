@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180530134624) do
+ActiveRecord::Schema.define(version: 20180530152417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,10 +53,15 @@ ActiveRecord::Schema.define(version: 20180530134624) do
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
-  create_table "orders_product_categories", id: false, force: :cascade do |t|
-    t.integer "product_category_id", null: false
-    t.integer "order_id",            null: false
+  create_table "orders_product_categories", force: :cascade do |t|
+    t.integer  "product_category_id"
+    t.integer  "order_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
+
+  add_index "orders_product_categories", ["order_id"], name: "index_orders_product_categories_on_order_id", using: :btree
+  add_index "orders_product_categories", ["product_category_id"], name: "index_orders_product_categories_on_product_category_id", using: :btree
 
   create_table "product_categories", force: :cascade do |t|
     t.integer  "quantity"
@@ -71,6 +76,16 @@ ActiveRecord::Schema.define(version: 20180530134624) do
   end
 
   add_index "product_categories", ["product_id"], name: "index_product_categories_on_product_id", using: :btree
+
+  create_table "product_categories_orders", force: :cascade do |t|
+    t.integer  "product_category_id"
+    t.integer  "order_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "product_categories_orders", ["order_id"], name: "index_product_categories_orders_on_order_id", using: :btree
+  add_index "product_categories_orders", ["product_category_id"], name: "index_product_categories_orders_on_product_category_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "product_name"
@@ -104,5 +119,9 @@ ActiveRecord::Schema.define(version: 20180530134624) do
   add_foreign_key "carts", "users"
   add_foreign_key "images", "product_categories"
   add_foreign_key "orders", "users"
+  add_foreign_key "orders_product_categories", "orders"
+  add_foreign_key "orders_product_categories", "product_categories"
   add_foreign_key "product_categories", "products"
+  add_foreign_key "product_categories_orders", "orders"
+  add_foreign_key "product_categories_orders", "product_categories"
 end
