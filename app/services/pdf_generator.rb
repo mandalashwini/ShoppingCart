@@ -5,13 +5,13 @@ class PdfGenerator < Prawn::Document
 		@product_category = product_category
 		puts @product_category
 		bill_title
-		bounding_box([200,650], :width => 400) do
+		bounding_box([150,650], :width => 400) do
 		product_name
 		product_details
 	   end
 	end
 	def bill_title
-		bounding_box([200,700], :width => 400) do
+		bounding_box([150,700], :width => 400) do
 		text "Bill Receipt", size: 20 , style: :bold
 		end
 	end
@@ -32,7 +32,7 @@ class PdfGenerator < Prawn::Document
 
 	def product_details_row
 
-		[["Price","description","Buy Date"]] + [[@product_category.price,@product_category.description, @product_category.buy]]
+		[["Price","description","Buy Date"]] + [[@product_category.price,@product_category.description, Date.today]]
 
 		
 	end

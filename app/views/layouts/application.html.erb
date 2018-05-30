@@ -9,7 +9,10 @@
   <%= javascript_include_tag 'bootstrap_js/bootstrap.min.js' %>
 </head>
 <body>
-
-<%= yield %>
-</body>
+ <%= yield %>
+ <div class= "flash-messages" >
+           <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+  </div>
+ </body>
 </html>

@@ -14,3 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree
+$(document).ready(function(){
+	setTimeout(function() {
+    $('.notice').slideUp(200);
+    $('.alert').slideUp(200);
+  }, 3000);
+});

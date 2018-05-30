@@ -1,5 +1,5 @@
 class ProductCategoriesController < ApplicationController
-    layout 'admin/adminDashboard'
+        layout 'home_layout'
     def new
         @ProductCategory=ProductCategory.new
       end
@@ -12,31 +12,27 @@ class ProductCategoriesController < ApplicationController
         else
             render :new
         end
-    #render plain: params.inspect    
+    
       end
 
       def index
-        #render plain: params.inspect 
-       @product=Product.find(params[:id])
+          @product=Product.find(params[:id])
       end
 
-
       def edit
-        #render plain: params[:id].inspect
-       @ProductCategory=ProductCategory.find(params[:id])
+          @ProductCategory=ProductCategory.find(params[:id])
       end
     
       def update
         @ProductCategory=ProductCategory.find(params[:id])
-        #render plain: params.inspect    
         if(@ProductCategory.update(category_params))
           flash[:notice] = "record updated!!!!"
           redirect_to list_categories_path(@ProductCategory.product_id)
         else
           render :edit
-        end
-    
-      end   
+        end 
+      end  
+
       def destroy
         @product_category=ProductCategory.find(params[:id])
         @product_category.destroy
@@ -45,24 +41,16 @@ class ProductCategoriesController < ApplicationController
 
       def buy_item
          @product_category=ProductCategory.find(params[:id])
-         #render plain: params.inspect
          unless user_signed_in?
-          puts "hhhh"
-          redirect_to new_user_session_path
-            #render :nothing => true
+             redirect_to new_user_session_path
          end
-
         if user_signed_in?
-          @product_category.update_attributes(quantity: (@product_category.quantity.to_i) - 1)
-          puts "user==>#{current_user}"
-          Cart.create(buy_date: Date.today, user_id: current_user.id,  product_category_id:@product_category.id)
-          #redirect_to request.referer
-           redirect_to ProductCategory_path(@product_category)
+            redirect_to ProductCategory_path(@product_category)
         end
       end
 
       def show
-        #render plain: params.inspect
+       # render plain: params.inspect
         @product_category=ProductCategory.find(params[:id])
         respond_to do |format|
           format.html
@@ -70,11 +58,20 @@ class ProductCategoriesController < ApplicationController
             pdf = PdfGenerator.new(@product_category)
             send_data pdf.render, filename: "#{@product_category}.pdf" , type: "application/pdf" ,
                             disposition: "inline"
-
-          end
-
+           end
+          @product_category
         end
+      end
 
+      def buy_confirmation
+        @product_category=ProductCategory.find(params[:id])
+        @product_category.quantity = (@product_category.quantity.to_i) - 1
+        #@product_category.update_attributes!(quantity: (@product_category.quantity.to_i) - 1)
+        @product_category.save!
+        binding.pry
+        Cart.create(buy_date: Date.today, user_id: current_user.id,  product_category_id:@product_category.id)
+        flash[:notice] = "Thank You !!"
+        redirect_to homepage_path
       end
 
       private

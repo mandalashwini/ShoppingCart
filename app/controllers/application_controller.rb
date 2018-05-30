@@ -12,10 +12,13 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
       if current_user.role.eql?("user")
+        binding.pry
+        puts "1111"
           stored_location_for(resource) || super
 
       elsif current_user.role.eql?("admin")
-          admindashboard_path
+          redirect_to admindashboard_path
+          binding.pry
       end
   end
 

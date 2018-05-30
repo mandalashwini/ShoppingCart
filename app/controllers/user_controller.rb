@@ -9,23 +9,7 @@ class UserController < ApplicationController
      @product=Product.find(params[:id])
   end
 
-  def buy_item
-         @product_category=ProductCategory.find(params[:id])
-         #render plain: params.inspect
-         unless user_signed_in?
-          puts "hhhh"
-          redirect_to new_user_session_path
-            #render :nothing => true
-         end
-
-        if user_signed_in?
-          @product_category.update_attributes(quantity: (@product_category.quantity.to_i) - 1)
-          puts "user==>#{current_user}"
-          Cart.create(buy_date: Date.today, user_id: current_user.id,  product_category_id:@product_category.id)
-          #redirect_to request.referer
-           redirect_to ProductCategory(@product_category)
-        end
-      end
+  
 
    def show_cart
    		@carts=current_user.carts
