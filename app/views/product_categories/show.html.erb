@@ -1,9 +1,12 @@
 <div class="container">
-    <div class="card">
+	<div class="card">
+	<%= form_for :confirm , url: buy_confirm_path(@product_category) do |f| %>
     	 <h3><%= @product_category.name %></h3>
 	     <p>Price <%= @product_category.price %></p>
 	     <p>Description <%= @product_category.description %></p>
-	     <%= link_to "OK", buy_confirm_path(@product_category)%><br>
-	     <%= link_to "Get Receipt (PDF)", ProductCategory_path(@product_category, format: "pdf")%>
+	     Quantity:-<%= f.text_field(:quantity)%><br>
+	     <%= f.submit "confirm" %><br>
+		 <%= link_to "Get Receipt (PDF)", ProductCategory_path(@product_category, format: "pdf")%>
+   <% end %>
     </div>
 </div>

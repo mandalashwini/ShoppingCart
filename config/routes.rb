@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get 'product_category/:id/edit', to: 'product_categories#edit', as: 'edit_product_category'
   put 'product_category/:id', to: 'product_categories#update',as: 'product_category'
    get 'product_category/buy_item/:id',to: 'product_categories#buy_item', as: 'buy_item'
-   get 'product_category/confirm/:id', to: 'product_categories#buy_confirmation', as: 'buy_confirm'
+   post 'product_category/confirm/:id', to: 'product_categories#buy_confirmation', as: 'buy_confirm'
    get 'product_category/:id',to: 'product_categories#show', as: 'ProductCategory' 
   ####User View
   get 'user/index', to: 'user#index', as: 'homepage'
