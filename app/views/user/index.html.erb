@@ -1,20 +1,22 @@
 
-<div class="container">
-        <div class="row">
+  <ul class="nav nav-tabs">
             <% @products.each do |p|%>
               <% if p.product_categories.present? %>
-                <div class="col-sm-3 col-md-4 col-lg-2">
+                
                   <% p.product_name[0] = p.product_name[0].capitalize %>
-               <%= link_to "#{p.product_name}", buyCategoryList_path(p), id: 'list' %>
-                </div>
+               <li><%= link_to "#{p.product_name}", buyCategoryList_path(p), id: 'list'%></li>
+                
               <% end %>
             <% end %>
-        </div>    
-</div>    
+          </ul>
 
           <br><br><br><br><br>
       
-        <div id="search-bar">
+        <div class="search-bar">
           <%= render "user/partials/search_form"%> 
+        </div>
+
+        <div class="slidebar">
+          <%= render "product_categories/partials/slidebar"%> 
         </div>
          
