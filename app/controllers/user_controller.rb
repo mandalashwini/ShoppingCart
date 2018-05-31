@@ -16,6 +16,12 @@ class UserController < ApplicationController
     def search_result
       puts "12345"
       @categories=SearchOperations.searchCategories(params[:search].downcase)
+      if @categories.present?
+        @categories
+      else
+        flash[:notice]="search not found!!"
+        redirect_to homepage_path
+      end
     end
 
     def search

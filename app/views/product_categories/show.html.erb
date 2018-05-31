@@ -2,13 +2,13 @@
 	<div class="card">
 	<%= form_for :confirm , url: buy_confirm_path(@product_category) do |f| %>
     	 <h3><%= @product_category.name %></h3>
-    	 <% @product_category.images.each do |c|%>
+    	 <p align="center"><% @product_category.images.each do |c|%>
 	            <%= image_tag(c.thumb.url) %>
 	     <% end %>
-	     <p>Price <%= @product_category.price %></p>
-	     <p>Description <%= @product_category.description %></p>
-	     Quantity:-<%= f.text_field(:quantity)%><br>
-	     <%= f.submit "confirm" %><br>
+	     <b>Price</b> <%= @product_category.price %></p>
+	     <p><b>Description</b> <%= @product_category.description %></p>
+	     <b>Quantity:-</b> 	<%= f.text_field(:quantity)%><br><br>
+	     <%= f.submit "confirm", class:"btn-primary" %><br>
 		 <%= link_to "Get Receipt (PDF)", ProductCategory_path(@product_category, format: "pdf")%>
    <% end %>
     </div>

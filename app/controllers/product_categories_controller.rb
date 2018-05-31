@@ -1,6 +1,6 @@
 class ProductCategoriesController < ApplicationController
-        layout 'home_layout',excepty:[:index, :new, :edit ]
         layout 'admin/adminDashboard',only:[:index, :new, :edit ]
+        layout 'home_layout'
         DELIVERY_CHARGES = 100
     def new
         @ProductCategory=ProductCategory.new
@@ -72,18 +72,23 @@ class ProductCategoriesController < ApplicationController
         #render plain: params[:confirm][:quantity].to_i.inspect
         @product_category=ProductCategory.find(params[:id])
         @quantity=params[:confirm][:quantity].to_i
-        if @quantity > @product_category.quantity
-          flash[:notice]="to many orders.."
+        if @quantity == 0
+          flash[:notice]="select quantity"
           redirect_to :back
-      else
-        @product_category.quantity = (@product_category.quantity.to_i) - @quantity
-        @product_category.save!
-        @Net_price = calculate_total_bill(@product_category,@quantity)
-        @product_category.orders.create(buy_date: Date.today, user_id: current_user.id, total_price: @Net_price, delivery_charges: DELIVERY_CHARGES )        #@cart = Hash.new
-        Cart.create(buy_date: Date.today, product_category_id:@product_category.id, quantity: @quantity,net_price: @Net_price)
-        flash[:notice] = "Thank You for buying with Us!!"
-        redirect_to homepage_path
+        else
+            if @quantity > @product_category.quantity
+              flash[:notice]="to many orders.."
+              redirect_to :back
+            else
+                @product_category.quantity = (@product_category.quantity.to_i) - @quantity
+                @product_category.save!
+                @Net_price = calculate_total_bill(@product_category,@quantity)
+                @product_category.orders.create(buy_date: Date.today, user_id: current_user.id, total_price: @Net_price, delivery_charges: DELIVERY_CHARGES )        #@cart = Hash.new
+                Cart.create(buy_date: Date.today, product_category_id:@product_category.id, quantity: @quantity,net_price: @Net_price)
+                redirect_to homepage_path
+        end
       end
+        
    end
 
    def calculate_total_bill(product_category,quantity)

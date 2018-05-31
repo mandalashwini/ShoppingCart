@@ -13,13 +13,20 @@
  *= require_tree .
  *= require_self
  */
- 
+
  .flash-messages{
 
     margin-top: -10%;
     margin-left: 40%;
  }
 .notice{
+    width: 24%;
+    color: green;
+    size: 43%;
+    font-style: italic;
+     font-size: 18px;
+}
+.alert{
     width: 24%;
     color: green;
     size: 43%;
@@ -73,7 +80,7 @@
     font-size: 20px;
     font-style: initial;
     color: #ffffff;
-    background-color: #2874F0;
+    /*background-color: #2874F0;*/
 }
 .navbar{
     position: relative;
