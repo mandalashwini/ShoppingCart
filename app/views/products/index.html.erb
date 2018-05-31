@@ -1,8 +1,8 @@
 <div class="container">
       <div class="card">
-<%= link_to 'New Product', new_product_path,class: 'btn btn-primary',remote: true, id: 'new_product_id'%>
-        <h1>Product</h1>
-        <table>
+        <h3>Product Details</h3>
+<%= link_to 'New Product', new_product_path,class: 'btn btn-primary',id: 'new_product_id'%>
+        <table class="table">
         <% @products.each do |p|%>
             <tr class="product-row">
                 <td><%= p.product_name %></td>
@@ -15,4 +15,3 @@
  </div>
 </div>
 
-<%= javascript_include_tag 'products/product' %>

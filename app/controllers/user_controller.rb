@@ -9,8 +9,6 @@ class UserController < ApplicationController
      @product=Product.find(params[:id])
   end
 
-  
-
    def show_cart
    		@carts=Cart.all
     end

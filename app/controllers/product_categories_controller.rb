@@ -1,5 +1,6 @@
 class ProductCategoriesController < ApplicationController
-        layout 'home_layout'
+        layout 'home_layout',excepty:[:index, :new, :edit ]
+        layout 'admin/adminDashboard',only:[:index, :new, :edit ]
         DELIVERY_CHARGES = 100
     def new
         @ProductCategory=ProductCategory.new
