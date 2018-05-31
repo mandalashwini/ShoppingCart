@@ -18,6 +18,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'prawn'
 gem 'prawn-table'
+gem 'client_side_validations'
 group :development, :test do  
   gem 'byebug'
   gem 'web-console', '~> 2.0'
