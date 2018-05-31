@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   layout 'admin/adminDashboard'
   def index
+    binding.pry
     @products=Product.all
   end
 

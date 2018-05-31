@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  buy_date: 2018-05-31
+  quantity: 1
+  net_price: 1.5
+
+two:
+  buy_date: 2018-05-31
+  quantity: 1
+  net_price: 1.5

@@ -48,13 +48,6 @@ class ProductCategoriesController < ApplicationController
 
          end
          # render plain: params.inspect
-         if user_signed_in?
-          @product_category.update(quantity: (@product_category.quantity.to_i) - 1)
-          #render :nothing => true
-        else
-          redirect_to new_user_session_path
-
-         end
         if user_signed_in?
             redirect_to ProductCategory_path(@product_category)
         end
@@ -83,13 +76,11 @@ class ProductCategoriesController < ApplicationController
           redirect_to :back
       else
         @product_category.quantity = (@product_category.quantity.to_i) - @quantity
-        #@product_category.update_attributes!(quantity: (@product_category.quantity.to_i) - 1)
         @product_category.save!
         @Net_price = calculate_total_bill(@product_category,@quantity)
-        Order.create(buy_date: Date.today, user_id: current_user.id, total_price: @Net_price, delivery_charges: DELIVERY_CHARGES )
-        #@cart = Hash.new
-        #@cart = {buy_date: Date.today, user_id: current_user.id,  product_category_id:@product_category.id}
-        flash[:notice] = "Thank You for being with Us!!"
+        @product_category.orders.create(buy_date: Date.today, user_id: current_user.id, total_price: @Net_price, delivery_charges: DELIVERY_CHARGES )        #@cart = Hash.new
+        Cart.create(buy_date: Date.today, product_category_id:@product_category.id, quantity: @quantity,net_price: @Net_price)
+        flash[:notice] = "Thank You for buying with Us!!"
         redirect_to homepage_path
       end
    end
@@ -100,6 +91,7 @@ class ProductCategoriesController < ApplicationController
       gst = product_category.GST.to_i
       gst_amount= ( total_amount * gst ) / 100
       @Net_price = total_amount + gst_amount
+
     
    end
   

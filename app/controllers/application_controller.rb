@@ -15,8 +15,14 @@ class ApplicationController < ActionController::Base
           stored_location_for(resource) || super
 
       elsif current_user.role.eql?("admin")
-          redirect_to admindashboard_path
+           admindashboard_path
       end
+  end
+   def after_sign_out_path_for(resource_or_scope)
+         Cart.destroy_all
+         #redirect_to :back
+         stored_location_for(resource_or_scope) || super
+
   end
 
   private

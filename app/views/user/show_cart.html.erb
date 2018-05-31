@@ -1,12 +1,17 @@
 <div class="container">
       <div class="card">
        <h1>My Cart</h1>
-       <% @carts.each do |c|%>
-            <% @product_category=ProductCategory.find(c.product_category_id)%>
-            <b><%=@product_category.name %></b><br/>
-            Price:- <%=@product_category.price %><br/>
-            Buy Date:- <%=c.buy_date%><br/><hr>
-        <% end %>
+       <% if @carts.present? %>
+	       <% @carts.each do |cartObj|%>
+	            <% @product_category=ProductCategory.find(cartObj.product_category_id)%>
+	            <b><%=@product_category.name %></b><br/>
+	            Quantity:- <%= cartObj.quantity%><br/>
+	            Net Price:- <%=cartObj.net_price %><br/>
+	            Buy Date:- <%=cartObj.buy_date%><br/><hr>
+	        <% end %>
+	    <% else %>
+	    	<p>Your Cart is Empty!!!!</p>
+	    <% end %>
  </div>
 </div>
 

@@ -12,7 +12,7 @@ class UserController < ApplicationController
   
 
    def show_cart
-   		@carts=current_user.carts
+   		@carts=Cart.all
     end
 
     def search_result
