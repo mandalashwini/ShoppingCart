@@ -16,7 +16,7 @@
 	        <p><b>Total :-</b> <%=total%></p>
 	        <%= link_to "Pay Bill"%>
 	        <%= link_to "Cancel", homepage_path%>
-	        <%= link_to "Get Receipt (PDF)", ProductCategory_path(@product_category, format: "pdf")%>
+	        <%= link_to "Get Receipt (PDF)",  pdf_generator_path("bill_receipt", format: "pdf")%>
 	    <% else %>
 	    	<p>Your Cart is Empty!!!!</p>
 	    <% end %>

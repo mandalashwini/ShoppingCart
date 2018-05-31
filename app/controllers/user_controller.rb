@@ -24,9 +24,18 @@ class UserController < ApplicationController
       end
     end
 
-    def search
-      render plain: params.inspect
-
+    def pdf_generator
+      #render plain: params.inspect
+       @cart=Cart.all
+        respond_to do |format|
+          format.html
+          format.pdf do
+            pdf = PdfGenerator.new(@cart)
+            send_data pdf.render, filename: "#{@product_category}.pdf" , type: "application/pdf" ,
+                            disposition: "inline"
+           end
+          @cart
+        end
     end
 end
 

@@ -83,22 +83,21 @@ class ProductCategoriesController < ApplicationController
                 @product_category.quantity = (@product_category.quantity.to_i) - @quantity
                 @product_category.save!
                 @Net_price = calculate_total_bill(@product_category,@quantity)
-                @product_category.orders.create(buy_date: Date.today, user_id: current_user.id, total_price: @Net_price, delivery_charges: DELIVERY_CHARGES )        #@cart = Hash.new
+                #@product_category.orders.create(buy_date: Date.today, user_id: current_user.id, total_price: @Net_price, delivery_charges: DELIVERY_CHARGES )        
                 Cart.create(buy_date: Date.today, product_category_id:@product_category.id, quantity: @quantity,net_price: @Net_price)
+                flash[:notice] = "product added into card.."
                 redirect_to homepage_path
         end
       end
-        
    end
 
+   
+
    def calculate_total_bill(product_category,quantity)
-  
       total_amount=product_category.price * quantity
       gst = product_category.GST.to_i
       gst_amount= ( total_amount * gst ) / 100
       @Net_price = total_amount + gst_amount
-
-    
    end
   
       private
