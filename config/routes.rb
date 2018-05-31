@@ -28,7 +28,8 @@ Rails.application.routes.draw do
   get 'user/index', to: 'user#index', as: 'homepage'
   get 'user/buyCategoryList/:id', to: 'user#buyCategoryList', as: 'buyCategoryList'
   get 'user/show_cart', to: 'user#show_cart', as: 'show_cart'
- get 'user/:id',to: 'user#pdf_generator', as: 'pdf_generator'
+ get 'user/pdf_generator/:id',to: 'user#pdf_generator', as: 'pdf_generator'
+ get 'user/payment_suceess', to: "user#payment_success", as: "payment_success"
   #get  'user/search', as: 'search_page'
  
   post 'user/search_result',to: 'user#search_result', as: 'search_result'
