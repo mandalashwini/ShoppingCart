@@ -1,4 +1,4 @@
-<% @categories = ProductCategory.all.limit(3)%>
+<% @categories = ProductCategory.all.limit(4)%>
 <% @categories.each do |categoryObj|%>
 	<% if categoryObj.quantity && categoryObj.quantity.to_i > 0 %>
 	             	 <div class="col-sm-12 col-md-3 col-lg-4">

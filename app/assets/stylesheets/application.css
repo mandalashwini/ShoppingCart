@@ -13,7 +13,10 @@
  *= require_tree .
  *= require_self
  */
+.container{
+    padding-top: 40px;
 
+}
  .flash-messages{
 
     margin-top: -10%;
@@ -39,12 +42,12 @@
 }
 .card{
     background-color: #e2e2e2;
-    width: 50%;
-    margin-left: 24%;
-    padding-left: 5%;
+    border-color: #5cb85c;
+    /*margin-left: 24%;*/
+   /* padding-left: 5%;
     border-radius: 3%;
     padding-top: 1%;
-    
+    */
 }
 .input-group{
     padding-top: 3%;
@@ -73,7 +76,7 @@
     pointer-events: none;
 }
 .well{
-    height: 70%;
+    height: 60%;
 }
 .navbar-inverse{
     background-color: #2874f0;
@@ -97,7 +100,7 @@
  
     border: 1px solid transparent;
     font-size: 20px;
-    color: #3386cb;
+    color: #5cb85c;
     padding-left: 60px;
 
 }
@@ -115,4 +118,7 @@
 .slidebar{
     margin-top: 4%;
     margin-bottom: 5%;
+}
+.message{
+    color: #FF0000;
 }

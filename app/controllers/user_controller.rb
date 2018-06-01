@@ -15,13 +15,18 @@ class UserController < ApplicationController
 
     def search_result
       puts "12345"
-      @categories=SearchOperations.searchCategories(params[:search].downcase)
-      if @categories.present?
-        @categories
-      else
-        flash[:notice]="search not found!!"
-        redirect_to homepage_path
-      end
+        if params[:search] == ""
+          flash[:notice]="Search not found!!"
+          redirect_to homepage_path
+        else
+           @categories=SearchOperations.searchCategories(params[:search].downcase)
+           if @categories.present?
+              @categories
+           else
+              flash[:notice]="Search not found!!"
+              redirect_to homepage_path
+           end
+        end
     end
 
     def pdf_generator

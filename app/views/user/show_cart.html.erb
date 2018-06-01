@@ -14,8 +14,8 @@
 	            <% total = total + cartObj.net_price%>
 	        <% end %>
 	        <p><b>Total :-</b> <%=total%></p>
-	        <%= link_to "Pay Bill",payment_success_path%>
-	        <%= link_to "Cancel", homepage_path%>
+	        <%= link_to "Pay Bill",payment_success_path, class: "btn-success"%>
+	        <%= link_to "Cancel", homepage_path, class: "btn-success"%>
 	        <%= link_to "Get Receipt (PDF)",  pdf_generator_path("bill_receipt", format: "pdf")%>
 	    <% else %>
 	    	<p>Your Cart is Empty!!!!</p>
