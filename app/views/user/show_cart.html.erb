@@ -1,12 +1,26 @@
 <div class="container">
       <div class="card">
        <h1>My Cart</h1>
-       <% @carts.each do |c|%>
-            <% @product_category=ProductCategory.find(c.product_category_id)%>
-            <b><%=@product_category.name %></b><br/>
-            Price:- <%=@product_category.price %><br/>
-            Buy Date:- <%=c.buy_date%><br/><hr>
-        <% end %>
+       <% if @carts.present? %>
+       <% total = 0%>
+	       <% @carts.each do |cartObj|%>
+	            <% @product_category=ProductCategory.find(cartObj.product_category_id)%>
+	            <b><%=@product_category.name %></b><br/>
+	            Original Price:- <%= @product_category.price%><br>
+	            GST :- <%= @product_category.GST %><br>
+	            Quantity :- <%= cartObj.quantity%><br/>
+	            Net Price :- <%=cartObj.net_price %><br/>
+	            Buy Date :- <%=cartObj.buy_date%><br/><hr>
+	            <% total = total + cartObj.net_price%>
+	        <% end %>
+	        <p><b>Total :-</b> <%=total%></p>
+	        <%= link_to "Pay Bill",payment_success_path, class: "btn-success"%>
+	        <%= link_to "Cancel", homepage_path, class: "btn-success"%>
+	        <%= link_to "Get Receipt (PDF)",  pdf_generator_path("bill_receipt", format: "pdf")%>
+	    <% else %>
+	    	<p>Your Cart is Empty!!!!</p>
+	    <% end %>
  </div>
+
 </div>
 

@@ -10,7 +10,7 @@
                                 <h3><%= category.name %></h3>
                                 
                                 <% category.images.each do |c|%>
-                                <%= image_tag(c.url , alt: 'Image') %>
+                                <%= image_tag(c.thumb.url) %>
                                 <% end %>
                                 <p>Price <%= category.price %></p>
                                 <p>Quantity <%= category.quantity %></p>

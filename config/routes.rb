@@ -20,13 +20,16 @@ Rails.application.routes.draw do
   get 'product_category/:id/edit', to: 'product_categories#edit', as: 'edit_product_category'
   put 'product_category/:id', to: 'product_categories#update',as: 'product_category'
    get 'product_category/buy_item/:id',to: 'product_categories#buy_item', as: 'buy_item'
-   get 'product_category/confirm/:id', to: 'product_categories#buy_confirmation', as: 'buy_confirm'
-   get 'product_category/:id',to: 'product_categories#show', as: 'ProductCategory' 
+   post 'product_category/confirm/:id', to: 'product_categories#buy_confirmation', as: 'buy_confirm'
+   get 'product_category/:id',to: 'product_categories#show', as: 'ProductCategory'
+
+
   ####User View
   get 'user/index', to: 'user#index', as: 'homepage'
   get 'user/buyCategoryList/:id', to: 'user#buyCategoryList', as: 'buyCategoryList'
   get 'user/show_cart', to: 'user#show_cart', as: 'show_cart'
- 
+ get 'user/pdf_generator/:id',to: 'user#pdf_generator', as: 'pdf_generator'
+ get 'user/payment_suceess', to: "user#payment_success", as: "payment_success"
   #get  'user/search', as: 'search_page'
  
   post 'user/search_result',to: 'user#search_result', as: 'search_result'

@@ -9,20 +9,38 @@ class UserController < ApplicationController
      @product=Product.find(params[:id])
   end
 
-  
-
    def show_cart
-   		@carts=current_user.carts
+   		@carts=Cart.all
     end
 
     def search_result
       puts "12345"
-      @categories=SearchOperations.searchCategories(params[:search].downcase)
+        if params[:search] == ""
+          flash[:notice]="Search not found!!"
+          redirect_to homepage_path
+        else
+           @categories=SearchOperations.searchCategories(params[:search].downcase)
+           if @categories.present?
+              @categories
+           else
+              flash[:notice]="Search not found!!"
+              redirect_to homepage_path
+           end
+        end
     end
 
-    def search
-      render plain: params.inspect
-
+    def pdf_generator
+      #render plain: params.inspect
+       @cart=Cart.all
+        respond_to do |format|
+          format.html
+          format.pdf do
+            pdf = PdfGenerator.new(@cart)
+            send_data pdf.render, filename: "#{@product_category}.pdf" , type: "application/pdf" ,
+                            disposition: "inline"
+           end
+          @cart
+        end
     end
 end
 
