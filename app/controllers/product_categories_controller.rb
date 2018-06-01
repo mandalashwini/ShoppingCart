@@ -57,7 +57,8 @@ class ProductCategoriesController < ApplicationController
       def show
        # render plain: params.inspect
         @product_category=ProductCategory.find(params[:id])
-        respond_to do |format|
+=begin
+          respond_to do |format|
           format.html
           format.pdf do
             pdf = PdfGenerator.new(@product_category)
@@ -66,6 +67,7 @@ class ProductCategoriesController < ApplicationController
            end
           @product_category
         end
+=end
       end
 
       def buy_confirmation

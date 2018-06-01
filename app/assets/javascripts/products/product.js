@@ -11,5 +11,5 @@ $('#new_product_id').hide().after('j render("new")');*/
 });
 /*$('#new_product_link').hide().after("<%= render for%>")*/
 
-});
+
 

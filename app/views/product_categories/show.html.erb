@@ -9,7 +9,6 @@
 	     <p><b>Description</b> <%= @product_category.description %></p>
 	     <b>Quantity:-</b> 	<%= f.text_field(:quantity)%><br><br>
 	     <%= f.submit "confirm", class:"btn-primary" %><br>
-		 <%= link_to "Get Receipt (PDF)", ProductCategory_path(@product_category, format: "pdf")%>
    <% end %>
     </div>
 </div>
