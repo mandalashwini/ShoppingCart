@@ -1,6 +1,6 @@
 <div class="container">
             <h2><%= @product.product_name %>
-            <%= link_to 'New Category', new_category_path(@product),class: 'btn btn-primary'%></h2>
+            <%= link_to 'New Category', new_category_path(@product),class: 'btn btn-success'%></h2>
             <%if @product.product_categories.empty?%>
                 <p>No List Found</p>
             <% else %>

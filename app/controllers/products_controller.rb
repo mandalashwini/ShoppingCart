@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  skip_before_filter :verify_authenticity_token  
   layout 'admin/adminDashboard'
   def index
     @products=Product.all
