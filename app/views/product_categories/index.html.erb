@@ -11,10 +11,9 @@
                                 
                                 <% category.images.each do |c|%>
                                 <%= image_tag(c.thumb.url) %>
-                                <% end %>
-                                <p>Price <%= category.price %></p>
-                                <p>Quantity <%= category.quantity %></p>
-                                <p>Description <%= category.description %></p>
+                                <% end %><br>
+                                <p><b>Price</b> <%= category.price %></p>
+                                <p><b>Quantity </b><%= category.quantity %></p>
                                 <p><%= link_to 'Edit', edit_product_category_path(category) %>
                                 <%= link_to 'Delete', delete_product_category_path(category), method: :delete, data: {confirm: 'Are You Sure?'} %></p>
                             </div>
