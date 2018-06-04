@@ -16,12 +16,6 @@ ActiveRecord::Schema.define(version: 20180531064139) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "ar_internal_metadata", primary_key: "key", force: :cascade do |t|
-    t.string   "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "carts", force: :cascade do |t|
     t.date     "buy_date"
     t.integer  "quantity"
@@ -33,14 +27,11 @@ ActiveRecord::Schema.define(version: 20180531064139) do
 
   add_index "carts", ["product_category_id"], name: "index_carts_on_product_category_id", using: :btree
 
-  create_table "images", force: :cascade do |t|
-    t.string   "img"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.integer  "product_category_id"
+  create_table "histories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
-
-  add_index "images", ["product_category_id"], name: "index_images_on_product_category_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.date     "buy_date"
@@ -48,10 +39,7 @@ ActiveRecord::Schema.define(version: 20180531064139) do
     t.float    "delivery_charges"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.integer  "user_id"
   end
-
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "orders_product_categories", force: :cascade do |t|
     t.integer  "product_category_id"
@@ -94,6 +82,7 @@ ActiveRecord::Schema.define(version: 20180531064139) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string   "name"
     t.string   "mobile_number"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
@@ -116,8 +105,6 @@ ActiveRecord::Schema.define(version: 20180531064139) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "carts", "product_categories"
-  add_foreign_key "images", "product_categories"
-  add_foreign_key "orders", "users"
   add_foreign_key "orders_product_categories", "orders"
   add_foreign_key "orders_product_categories", "product_categories"
   add_foreign_key "product_categories", "products"

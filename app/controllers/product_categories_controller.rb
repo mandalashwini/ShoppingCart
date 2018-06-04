@@ -1,4 +1,5 @@
 class ProductCategoriesController < ApplicationController
+        skip_before_filter :verify_authenticity_token   
         layout 'admin/adminDashboard',only:[:index, :new, :edit ]
         layout 'home_layout'
         DELIVERY_CHARGES = 100
@@ -37,8 +38,11 @@ class ProductCategoriesController < ApplicationController
 
       def destroy
         @product_category=ProductCategory.find(params[:id])
+        product_id= @product_category.product_id
+        binding.pry
         @product_category.destroy
-        redirect_to list_categories_path
+        binding.pry
+        redirect_to list_categories_path(product_id)
       end
 
       def buy_item
@@ -57,6 +61,7 @@ class ProductCategoriesController < ApplicationController
       def show
        # render plain: params.inspect
         @product_category=ProductCategory.find(params[:id])
+
 =begin
           respond_to do |format|
           format.html
@@ -76,10 +81,12 @@ class ProductCategoriesController < ApplicationController
         @quantity=params[:confirm][:quantity].to_i
         if @quantity == 0
           flash[:notice]="select quantity"
+          binding.pry
           redirect_to :back
         else
             if @quantity > @product_category.quantity
               flash[:notice]="to many orders.."
+              binding.pry
               redirect_to :back
             else
                 @product_category.quantity = (@product_category.quantity.to_i) - @quantity
