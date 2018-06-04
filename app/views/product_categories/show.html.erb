@@ -5,14 +5,14 @@
     	  <div class= "flash-messages" >
            <p class="notice"><%= notice %></p>
           <p class="alert"><%= alert %></p>
-  		</div>	
+  		</div>	<br>
     	 <p align="center"><% @product_category.images.each do |c|%>
-	            <%= image_tag(c.thumb.url) %>
-	     <% end %>
-	     <b>Price</b> <%= @product_category.price %></p>
+	            <%= image_tag(c.thumb.url) %><br>
+	     <% end %></p>
+	     <b>Price</b> <%= @product_category.price %>
 	     <p><b>Description</b> <%= @product_category.description %></p>
 	     <b>Quantity:-</b> 	<%= f.text_field(:quantity)%><br><br>
-	     <%= f.submit "confirm", class:"btn-success" %><br>
+	     <p align="left"><%= f.submit "confirm", class:"btn-success" %><br>
    <% end %>
     </div>
 </div>
