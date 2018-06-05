@@ -7,6 +7,9 @@ class ProductsController < ApplicationController
 
   def new
     @product=Product.new
+    respond_to do |format|
+      format.html{render :partial => 'products/new' ,locals: {product: @product} }
+      end
     
   end
 

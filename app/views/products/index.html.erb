@@ -1,7 +1,16 @@
+<head>
+    <%=javascript_include_tag "products/product.js"%>
+    
+</head>
 <div class="container">
       <div class="card">
         <h3>Product Details</h3>
-<%= link_to 'New Product', new_product_path,class: 'btn btn-success',id: 'new_product_id', remote: true %>
+            <div class="product-btn">
+    <%= link_to 'New Product', new_product_path,class: 'btn btn-success',id: 'new_product_id', remote: true %>
+    </div>
+    <div class="new-product-view">
+            
+    </div>
         <table class="table">
         <% @products.each do |p|%>
             <tr class="product-row">
@@ -14,5 +23,5 @@
         </table>
  </div>
 </div>
-<%=javascript_include_tag "products/product.js"%>
+
 

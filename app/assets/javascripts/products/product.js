@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+console.log("one")
 $('#new_product_id').click(function(){
 	$.ajax({
 		url: "/products/new",
@@ -7,7 +7,10 @@ $('#new_product_id').click(function(){
 		datatype: "html",
 		data: "result",
 		success: function(result){
+			$(".product-btn").hide();
+			$(".new-product-view").append(result);
 			console.log("success")
+
 
 		},
 		error: function(argument) {
