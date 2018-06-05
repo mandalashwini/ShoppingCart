@@ -7,6 +7,10 @@ class ProductsController < ApplicationController
 
   def new
     @product=Product.new
+    responds_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create

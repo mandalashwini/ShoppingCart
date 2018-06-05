@@ -1,15 +1,23 @@
 $(document).ready(function(){
-/*alert("hello");
-*/
 
-/*$('#new_product_id').click(function(){
-	alert("ashu");
-});*/
-/*$('#new_product_id').click(function(){
-	alert("AShu");
-$('#new_product_id').hide().after('j render("new")');*/
-});
-/*$('#new_product_link').hide().after("<%= render for%>")*/
+$('#new_product_id').on('click', function(){
+	$.ajax({
+		url: "/products/new",
+		type: "get",
+		datatype: "data",
+		success: function(result){
+			console.log("success")
+
+		},
+		error: function(argument) {
+		console.log("Fail..........")	
+		}
+	});
+
+})
+})
+
+
 
 
 
