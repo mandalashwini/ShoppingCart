@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-$('#new_product_id').on('click', function(){
+$('#new_product_id').click(function(){
 	$.ajax({
 		url: "/products/new",
 		type: "get",
@@ -12,6 +12,7 @@ $('#new_product_id').on('click', function(){
 		console.log("Fail..........")	
 		}
 	});
+
 
 })
 })
