@@ -1,0 +1,12 @@
+		 <% if @product.errors.any?%>
+            <% @product.errors.full_messages.each do |msg| %>
+                <%= msg %>
+                <% end %>
+        <% end %>
+        Product Name <%= f.text_field :product_name%>
+        <%= f.submit(:save, {class: 'btn btn-success'}) %>
+        <%=link_to 'cancel', admindashboard_path, class: 'btn btn-danger'%>
+
+
+
+    

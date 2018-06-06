@@ -1,16 +1,16 @@
+<div class="container">
 <% cnt= 0 %>
 <% if @product.product_categories.present? %>
 	<% @product.product_categories.each do |categoryObj|%>
 	             	<% if categoryObj.quantity.to_i > 0 %>
-	             	 <div class="col-sm-3 col-md-4 col-lg-4">
+	             	 <div class="col-sm-12 col-md-4 col-lg-4">
 	             		<div class="well">
 	                                <h3><%= categoryObj.name %></h3>
-	                                <% categoryObj.images.each do |c|%>
+	                                <p><% categoryObj.images.each do |c|%>
 	                                <%= image_tag(c.thumb.url) %>
 	                                <% end %>
-	                                <p>Price <%= categoryObj.price %></p>
-	                                <p>Description <%= categoryObj.description %></p>
-	                                <p><%= link_to 'Buy',buy_item_path(categoryObj), data: {confirm: 'Are You Sure?'} %></p>            
+	                                <b>Price</b> <%= categoryObj.price %>
+	                                <%= link_to 'Buy',buy_item_path(categoryObj), data: {confirm: 'Are You Sure?'} %></p>            
 	            	     </div>
 	       			</div>
 	                  <% else %>
@@ -23,4 +23,4 @@
      <p>No List Found...</p>
  </div>
 <% end %>
-	
+</div>
