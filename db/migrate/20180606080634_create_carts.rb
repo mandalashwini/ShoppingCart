@@ -3,7 +3,7 @@ class CreateCarts < ActiveRecord::Migration
     create_table :carts do |t|
       t.date :buy_date
       t.integer :quantity
-      t.float :net_price
+      t.float :price
 
       t.timestamps null: false
     end

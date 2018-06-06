@@ -1,4 +1,4 @@
-class AddProductCategoryReferencesToCarts < ActiveRecord::Migration
+class AddProductcategoryReferencesToCart < ActiveRecord::Migration
   def change
     add_reference :carts, :product_category, index: true
     add_foreign_key :carts, :product_categories
