@@ -1,0 +1,22 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand"><span style="font-size:30px">Shopping Cart</span></a>
+       <a class="navbar-brand"><span style="font-size:20px">Admin Dashboard</span></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+        
+        <li><a><span>Welcome <%= current_user.firstname%></span></a></li>
+        <li><a href="/products/index">Home</a></li>
+        <li><a href="/users/edit"><span>Edit</span></a></li>
+        <li><a href="/users/sign_out" onclick="return confirm('Are you sure?')"><span>Logout</span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

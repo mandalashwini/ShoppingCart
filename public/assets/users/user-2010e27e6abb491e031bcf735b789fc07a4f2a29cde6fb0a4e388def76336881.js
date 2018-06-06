@@ -1,0 +1,1 @@
+$(document).ready(function(){$("#search-input").bind("keyup click",function(){var c=$("#search-input").val();$.ajax({url:"/user/search_result",type:"post",data:{search_data:c},success:function(){console.log("success")},error:function(){console.log("fail")}})})});

@@ -1,21 +1,25 @@
-<div class="container">
-        <div class="row">
+
+  <ul class="nav nav-tabs">
             <% @products.each do |p|%>
               <% if p.product_categories.present? %>
-                <div class="col-sm-3 col-md-4 col-lg-2">
-               <%= link_to "#{p.product_name}", buyCategoryList_path(p), id: 'list',class: 'btn btn-primary' %>
-                </div>
+                
+                  <% p.product_name[0] = p.product_name[0].capitalize %>
+               <li><%= link_to "#{p.product_name}", buyCategoryList_path(p), id: 'list'%></li>
+                
               <% end %>
             <% end %>
-        </div>    
-</div>    
+          </ul>
 
           <br><br><br><br><br>
-        <%= render 'layouts/partials/searchbox' %>
-         <footer class="container-fluid text-center">
-          <p>Online Store Copyright</p>  
-          <form class="form-inline">Get deals:
-            <input type="email" class="form-control" size="50" placeholder="Email Address">
-            <button type="button" class="btn btn-danger">Sign Up</button>
-          </form>
-</footer>
+  <div class= "flash-messages" >
+           <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+  </div>   <br><br><br><br><br>
+        <div class="search-bar">
+          <%= render "user/partials/search_form"%> 
+        </div>
+
+        <div class="container">
+          <%= render "product_categories/partials/slidebar"%> 
+        </div>
+         

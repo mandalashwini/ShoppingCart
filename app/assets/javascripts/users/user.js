@@ -1,20 +1,25 @@
 $(document).ready(function(){
-	$('#search_id').click(function(){
-		var params = $('#search_text').val();
+	/*$('#search-input').bind('keyup click',function(){
+		var params = $('#search-input').val();
 		$.ajax({
-        url: "/user/search",
+        url: "/user/search_result",
         type: "post",
         data: {search_data: params},
-        dataType: "json",
         success: function(result){
-               console.log(JSON.stringify(result));
+              console.log("success")
+               /*console.log(result.class)
+               if(result == "")
+                alert("search not found!!")
+               else
+               $("#search-result").html(result)
+
         },
         error: function(){
-               alert("fail"); 
+               console.log("fail")
          }
 	});
 		
-	});
+	});*/
 	
 	
 });

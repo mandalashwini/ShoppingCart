@@ -4,12 +4,17 @@
   <title>ShoppingCart</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>  
+  <%= javascript_include_tag 'default', 'rails.validations' %> 
   <%= stylesheet_link_tag  'bootstrap_css/bootstrap.min.css' %>
   <%= javascript_include_tag 'bootstrap_js/jquery.min.js' %>
   <%= javascript_include_tag 'bootstrap_js/bootstrap.min.js' %>
 </head>
 <body>
-
-<%= yield %>
-</body>
+  <div class= "flash-messages" >
+           <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+  </div>
+ <%= yield %>
+ 
+ </body>
 </html>

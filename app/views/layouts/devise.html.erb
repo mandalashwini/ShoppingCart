@@ -3,14 +3,24 @@
       <title>Shopping Cart</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <%= stylesheet_link_tag 'user' %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+       <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
       <%= stylesheet_link_tag  'bootstrap_css/bootstrap.min.css' %>
       <%= javascript_include_tag 'bootstrap_js/jquery.min.js' %>
       <%= javascript_include_tag 'bootstrap_js/bootstrap.min.js' %>
+
     </head>
     <body>
       <div class="nav-bar">
-          <%= render template: 'layouts/partials/_navbar' %>
+          <% if current_user.present? %>
+                <% if current_user.role.eql?("user")%>
+                    <%= render template: 'layouts/partials/_login_nav' %>
+               <%elsif current_user.role.eql?("admin")%>
+                      <%= render template: 'layouts/admin/partials/_nav' %>
+                <%end%>
+            <%else%>
+                <%= render template: 'layouts/partials/_navbar' %>        
+           <%end%>
       </div>
       <div class="main-body">
         <%= yield %> 

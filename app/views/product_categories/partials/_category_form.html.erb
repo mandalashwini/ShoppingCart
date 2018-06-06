@@ -14,9 +14,15 @@
             </div>
             <div class="input-group">
             <%= f.label :'Description'%><span style="color: red"><%if @ProductCategory.errors[:description].present? %>*<%=@ProductCategory.errors[:description][0]%><% end %></span><br>
-            <%= f.text_field :description %>
+            <%= f.text_area :description %>
             </div>
+
+            <div class="input-group">
+            <%= f.label :'Upload image'%><br>
+            <%= f.file_field :images , multiple: true%>
+            </div>
+
              <div class="input-group">
-                <%= f.submit(:save) %>
+                <%= f.submit(:save, {class: 'btn btn-success'})%>
                 <%=link_to 'cancel', admindashboard_path %>
             </div>

@@ -1,0 +1,9 @@
+<%= form_for :search_data , url: search_result_path do |f| %>
+	
+	<div class="input-group">
+      <input type="text" class="form-control" placeholder="Search" name="search" id= "search_text">
+      <div class="input-group-btn">
+           <%= f.submit "Search",id: "search_id", class: "btn btn-large btn-success search-button " %>
+      </div>
+</div>
+<%end%>

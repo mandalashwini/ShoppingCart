@@ -13,7 +13,114 @@
  *= require_tree .
  *= require_self
  */
+.container{
+    padding-top: 40px;
+
+}
+ .flash-messages{
+
+    margin-top: -10%;
+    margin-left: 40%;
+ }
+.notice{
+    width: 24%;
+    color: green;
+    size: 43%;
+    font-style: italic;
+     font-size: 18px;
+}
+.alert{
+    width: 24%;
+    color: green;
+    size: 43%;
+    font-style: italic;
+     font-size: 18px;
+}
+.input-group{
+    width:60%;
+    margin-left: 19%;
+}
+.card{
+    background-color: #e2e2e2;
+    border-color: #5cb85c;
+        width: 60%;
+    margin-left: 21%;
+    padding-left: 8%;
+    padding-top: 1%;
+}
+.input-group{
+    padding-top: 3%;
+}
+
+.form-control{
+    width: 10%;
+    height: 51px;
+    padding-left: 46px;
+ }
  
  .navbar{
  min-height: 60px;
  }
+ 
+.form-control-feedback {
+	position: absolute;
+    top: 0;
+    /* right: 0; */
+    z-index: 2;
+    display: block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    pointer-events: none;
+}
+.well{
+    height: 60%;
+}
+.navbar-inverse{
+    background-color: #2874f0;
+    font-size: 20px;
+    font-style: initial;
+    color: #ffffff;
+    /*background-color: #2874F0;*/
+}
+.navbar{
+    position: relative;
+        min-height: 70px;
+        margin-bottom: 20px;
+        padding-top: 6px;
+}
+.nav-tabs {
+    border-bottom: 1px solid #ddd;
+    height: 45px;
+    }
+
+.nav-tabs>li>a {
+ 
+    border: 1px solid transparent;
+    font-size: 20px;
+    color: #5cb85c;
+    padding-left: 60px;
+
+}
+.search-bar{
+   margin-top: -6%;
+}
+.input-group .form-control:first-child, .input-group-addon:first-child, .input-group-btn:first-child>.btn, .input-group-btn:first-child>.btn-group>.btn, .input-group-btn:first-child>.dropdown-toggle, .input-group-btn:last-child>.btn-group:not(:last-child)>.btn, .input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle){
+    height: 51px;
+}
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group{
+    margin-left: -1px;
+    height: 51px;
+    width: 100px;
+}
+.slidebar{
+    margin-top: 4%;
+    margin-bottom: 5%;
+}
+.message{
+    color: #FF0000;
+}
+input[type=text], input[type=password], input[type=email]{
+    width: 50%;
+}
