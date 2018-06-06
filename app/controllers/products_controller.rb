@@ -11,7 +11,6 @@ class ProductsController < ApplicationController
     respond_to do |format|
      format.html{render :partial => 'products/new' ,locals: {product: @product} }
     end
-    
   end
 
   def create
