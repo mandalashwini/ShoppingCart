@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$('#search-input').bind('keyup click',function(){
+	/*$('#search-input').bind('keyup click',function(){
 		var params = $('#search-input').val();
 		$.ajax({
         url: "/user/search_result",
@@ -11,7 +11,7 @@ $(document).ready(function(){
                if(result == "")
                 alert("search not found!!")
                else
-               $("#search-result").html(result)*/
+               $("#search-result").html(result)
 
         },
         error: function(){
@@ -19,7 +19,7 @@ $(document).ready(function(){
          }
 	});
 		
-	});
+	});*/
 	
 	
 });

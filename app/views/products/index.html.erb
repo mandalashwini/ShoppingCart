@@ -1,12 +1,17 @@
 <div class="container">
       <div class="card">
         <h3>Product Details</h3>
-<%= link_to 'New Product', new_product_path,class: 'btn btn-success',id: 'new_product_id' %>
+            <div class="product-btn">
+    <%= link_to 'New Product', new_product_path,class: 'btn btn-success',id: 'new_product_id', remote: true %>
+    </div>
+    <div class="new-product-view">
+            
+    </div>
         <table class="table">
         <% @products.each do |p|%>
             <tr class="product-row">
                 <td><%= p.product_name %></td>
-                <td><%= link_to 'Edit',edit_product_path(p) %></td>
+                <td><%= link_to 'Edit',edit_product_path(p),class: 'edit-product', remote: true %></td>
                 <td><%= link_to 'View',list_categories_path(p) %></td>
                 <td><%= link_to 'Delete',delete_product_path(p),method: :delete, data: {confirm: 'Are You Sure?'}%></td>
            </tr>
@@ -14,5 +19,5 @@
         </table>
  </div>
 </div>
-<%=javascript_include_tag "products/product.js"%>
+
 
