@@ -19,4 +19,26 @@ $(document).ready(function(){
     $('.notice').slideUp(200);
     $('.alert').slideUp(200);
   }, 3000);
+
+	
+	$('#new_product_id').click(function(){
+	$.ajax({
+		url: "/products/new",
+		type: "get",
+		datatype: "html",
+		data: "result",
+		success: function(result){
+			$(".product-btn").hide();
+			$(".new-product-view").append(result);
+			console.log("success")
+
+
+		},
+		error: function(argument) {
+		console.log("Fail..........")	
+		}
+	});
+
+
+})
 });

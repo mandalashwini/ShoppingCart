@@ -1,4 +1,4 @@
-$(document).ready(function(){
+/*$(document).ready(function(){
 console.log("one")
 $('#new_product_id').click(function(){
 	$.ajax({
@@ -21,7 +21,7 @@ $('#new_product_id').click(function(){
 
 })
 })
-
+*/
 
 
 
