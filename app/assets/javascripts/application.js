@@ -20,7 +20,7 @@ $(document).ready(function(){
     $('.alert').slideUp(200);
   }, 3000);
 
-	
+	//New product
 	$('#new_product_id').click(function(){
 	$.ajax({
 		url: "/products/new",
@@ -40,5 +40,29 @@ $(document).ready(function(){
 	});
 
 
+})
+
+	//Edit product
+
+	$('.edit-product').click(function(){
+		//#alert("hello");
+		var params= $(this).attr('href').split("/");
+		console.log("params---->"+params[2]);
+		$.ajax({
+		url: "/products/:id/edit",
+		type: "get",
+		datatype: "html",
+		data: {"pid":params[2]},
+		success: function(result){
+			$(".product-btn").hide();
+			$(".new-product-view").html(result);
+
+
+		},
+		error: function(argument) {
+		console.log("Fail..........")	
+
+		}
+	});
 })
 });

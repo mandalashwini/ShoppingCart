@@ -1,10 +1,7 @@
-<div class="container">
-      <div class="card">
+
     <%= form_for :product, url: product_path(@product), method: :put do |f| %>
             <%= render partial: "products/form", locals: {f: f} %>
     <% end %>
-    </div>
-</div>
 
 
 

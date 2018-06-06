@@ -1,5 +1,4 @@
-
-        <% if @product.errors.any?%>
+		 <% if @product.errors.any?%>
             <% @product.errors.full_messages.each do |msg| %>
                 <%= msg %>
                 <% end %>

@@ -26,13 +26,17 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product=Product.find(params[:id])
+    # render plain: params.inspect
+    @product=Product.find(params[:pid].to_i)
+     respond_to do |format|
+     format.html{render :partial => 'products/edit' ,locals: {product: @product} }
+    end
   end
 
   def update
+     #render plain: params.inspect
     @product=Product.find(params[:id])
     if(@product.update(product_params))
-      flash[:notice] = "record updated!!!!"
       redirect_to admindashboard_path
     else
       render :edit
