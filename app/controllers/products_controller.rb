@@ -6,21 +6,21 @@ class ProductsController < ApplicationController
   end
 
   def new
+    #render plain: params.inspect
     @product=Product.new
     respond_to do |format|
-      format.html{render :partial => 'products/new' ,locals: {product: @product} }
-      end
+     format.html{render :partial => 'products/new' ,locals: {product: @product} }
+    end
     
   end
 
   def create
-    #render plain: params.inspect
+   # render plain: params.inspect
           @product=Product.new(product_params)
           if  @product.save
-          flash[:notice] = "record created!!!!"
           redirect_to admindashboard_path
           else
-            render :new
+            redirect_to :back
           end
     
   end
