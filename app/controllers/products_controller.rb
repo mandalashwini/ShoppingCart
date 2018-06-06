@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
     #render plain: params.inspect
     @product=Product.new
     respond_to do |format|
-     format.html{render :partial => 'products/new' ,locals: {product: @product} }
+     format.html{render :partial => 'products/partials/new' ,locals: {product: @product} }
     end
   end
 
@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
     # render plain: params.inspect
     @product=Product.find(params[:pid].to_i)
      respond_to do |format|
-     format.html{render :partial => 'products/edit' ,locals: {product: @product} }
+     format.html{render :partial => 'products/partials/edit' ,locals: {product: @product} }
     end
   end
 
@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
     if(@product.update(product_params))
       redirect_to admindashboard_path
     else
-      render :edit
+      redirect_to :back
     end
 
   end
