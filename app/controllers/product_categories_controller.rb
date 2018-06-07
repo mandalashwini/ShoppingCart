@@ -39,9 +39,7 @@ class ProductCategoriesController < ApplicationController
       def destroy
         @product_category=ProductCategory.find(params[:id])
         product_id= @product_category.product_id
-        binding.pry
         @product_category.destroy
-        binding.pry
         redirect_to list_categories_path(product_id)
       end
 
@@ -81,12 +79,11 @@ class ProductCategoriesController < ApplicationController
         @quantity=params[:confirm][:quantity].to_i
         if @quantity == 0
           flash[:notice]="select quantity"
-          binding.pry
           redirect_to :back
         else
             if @quantity > @product_category.quantity
               flash[:notice]="to many orders.."
-              binding.pry
+   
               redirect_to :back
             else
                 @product_category.quantity = (@product_category.quantity.to_i) - @quantity

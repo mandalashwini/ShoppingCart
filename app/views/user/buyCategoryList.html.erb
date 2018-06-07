@@ -1,6 +1,7 @@
 <div class="container">
 <% cnt= 0 %>
 <% if @product.product_categories.present? %>
+	<h2><%= @product.product_name%></h2>
 	<% @product.product_categories.each do |categoryObj|%>
 	             	<% if categoryObj.quantity.to_i > 0 %>
 	             	 <div class="col-sm-12 col-md-4 col-lg-4">
@@ -10,7 +11,7 @@
 	                                <%= image_tag(c.thumb.url) %>
 	                                <% end %>
 	                                <b>Price</b> <%= categoryObj.price %>
-	                                <%= link_to 'Buy',buy_item_path(categoryObj), data: {confirm: 'Are You Sure?'} %></p>            
+	                               <%= link_to 'Add to Cart',buy_item_path(categoryObj)%></p>            
 	            	     </div>
 	       			</div>
 	                  <% else %>

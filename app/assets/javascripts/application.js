@@ -15,10 +15,10 @@
 //= require turbolinks
 //= require_tree
 $(document).ready(function(){
-	setTimeout(function() {
+	/*setTimeout(function() {
     $('.notice').slideUp(200);
     $('.alert').slideUp(200);
-  }, 3000);
+  }, 3000);*/
 
 	//New product
 	$('#new_product_id').click(function(){
