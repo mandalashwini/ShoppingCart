@@ -1,8 +1,10 @@
 <div class="container">
             <h2><%= @product.product_name %>
             <%= link_to 'New Category', new_category_path(@product),class: 'btn btn-success'%></h2>
+             
             <%if @product.product_categories.empty?%>
-                <p>No List Found</p>
+                <p class="notice">List Not Found!</p>
+            
             <% else %>
                     <% @product.product_categories.each do |category|%>
                             <div class="col-sm-12 col-md-3 col-lg-4">
@@ -12,8 +14,9 @@
                                 <% category.images.each do |c|%>
                                 <%= image_tag(c.thumb.url) %>
                                 <% end %><br>
-                                <p><b>Price</b> <%= category.price %></p>
-                                <p><b>Quantity </b><%= category.quantity %></p>
+                                <p><b>Price :- </b> <%= category.price %></p>
+                                <p><b>Quantity :- </b><%= category.quantity %></p>
+                               <!--  <p><b>Description :-</b><%= category.description %> -->
                                 <p><%= link_to 'Edit', edit_product_category_path(category) %>
                                 <%= link_to 'Delete', delete_product_category_path(category), method: :delete, data: {confirm: 'Are You Sure?'} %></p>
                             </div>
