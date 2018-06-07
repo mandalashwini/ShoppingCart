@@ -1,4 +1,8 @@
-<% @categories = ProductCategory.all.limit(4)%>
+<% @categories = ProductCategory.all.paginate(:page => params[:search], :per_page => 3)%>
+<div class="pagination">
+		<%= will_paginate @categories, param_name: "search" %>
+	</div>
+	<br>
 <% @categories.each do |categoryObj|%>
 	<% if categoryObj.quantity && categoryObj.quantity.to_i > 0 %>
 	             	 <div class="col-sm-12 col-md-3 col-lg-4">
@@ -17,3 +21,4 @@
 	    	<% end %>
 	   
 	<% end %>
+	

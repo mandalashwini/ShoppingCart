@@ -1,8 +1,15 @@
 <div class="container">
 <% cnt= 0 %>
+<%=link_to 'back', homepage_path %>
+<br>
 <% if @product.product_categories.present? %>
+	<% @categories = @product.product_categories.paginate(:page => params[:search], :per_page => 3)%>
+		<div class="pagination">
+				<%= will_paginate @categories,param_name: "search" %>
+		</div>
+	<br>
 	<h2><%= @product.product_name%></h2>
-	<% @product.product_categories.each do |categoryObj|%>
+	<% @categories.each do |categoryObj|%>
 	             	<% if categoryObj.quantity.to_i > 0 %>
 	             	 <div class="col-sm-12 col-md-4 col-lg-4">
 	             		<div class="well">
@@ -19,7 +26,7 @@
 	                <% end %>
 	<% end %>
 <% end %>
-<% if cnt == @product.product_categories.length %>
+<% if cnt == @categories.length %>
 	<div class="well">
      <p>No List Found...</p>
  </div>

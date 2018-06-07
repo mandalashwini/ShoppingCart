@@ -1,9 +1,9 @@
 class ProductCategoriesController < ApplicationController
         skip_before_filter :verify_authenticity_token   
-        layout 'admin/adminDashboard',only:[:index, :new, :edit ]
-        layout 'home_layout'
+         layout 'admin/adminDashboard',only: [:index]
         DELIVERY_CHARGES = 100
     def new
+        render layout: "admin/adminDashboard"
         @ProductCategory=ProductCategory.new
       end
 
@@ -15,7 +15,6 @@ class ProductCategoriesController < ApplicationController
         else
             render :new
         end
-    
       end
 
       def index
@@ -23,6 +22,7 @@ class ProductCategoriesController < ApplicationController
       end
 
       def edit
+          render layout: "admin/adminDashboard"
           @ProductCategory=ProductCategory.find(params[:id])
       end
     
@@ -44,37 +44,22 @@ class ProductCategoriesController < ApplicationController
       end
 
       def buy_item
-
          @product_category=ProductCategory.find(params[:id])
          unless user_signed_in?
              redirect_to new_user_session_path
-
          end
-         # render plain: params.inspect
         if user_signed_in?
             redirect_to ProductCategory_path(@product_category)
         end
       end
 
       def show
-       # render plain: params.inspect
         @product_category=ProductCategory.find(params[:id])
-
-=begin
-          respond_to do |format|
-          format.html
-          format.pdf do
-            pdf = PdfGenerator.new(@product_category)
-            send_data pdf.render, filename: "#{@product_category}.pdf" , type: "application/pdf" ,
-                            disposition: "inline"
-           end
-          @product_category
-        end
-=end
+       render layout: "home_layout"
+       @product_category
       end
 
       def buy_confirmation
-        #render plain: params[:confirm][:quantity].to_i.inspect
         @product_category=ProductCategory.find(params[:id])
         @quantity=params[:confirm][:quantity].to_i
         if @quantity == 0
@@ -89,7 +74,6 @@ class ProductCategoriesController < ApplicationController
                 @product_category.quantity = (@product_category.quantity.to_i) - @quantity
                 @product_category.save!
                 @Net_price = calculate_total_bill(@product_category,@quantity)
-                #@product_category.orders.create(buy_date: Date.today, user_id: current_user.id, total_price: @Net_price, delivery_charges: DELIVERY_CHARGES )        
                 Cart.create(buy_date: Date.today, product_category_id:@product_category.id, quantity: @quantity,net_price: @Net_price)
                 flash[:notice] = "product added into card.."
                 redirect_to homepage_path

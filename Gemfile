@@ -20,6 +20,8 @@ gem 'prawn'
 gem 'prawn-table'
 gem 'activesupport'
 gem 'client_side_validations'
+#gem 'kaminari'
+gem 'will_paginate'
 group :development, :test do  
   gem 'byebug'
   gem 'web-console', '~> 2.0'
