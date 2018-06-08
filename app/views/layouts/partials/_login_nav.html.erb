@@ -16,7 +16,7 @@
         <li><a href="/user/index"><span class="glyphicon glyphicon-home green"></span>Home</a></li>
         <li><a href="/users/edit"><span>Edit</span></a></li>
         <li><a href="/users/sign_out" onclick="return confirm('Are you sure?')"><span>Logout</span></a></li>
-        <li><a href="/user/show_cart"><div class="cart_count"><span style="font-size: 15px; color: red"><%= Cart.select(:id).all.count %></span></div><span class="glyphicon glyphicon-shopping-cart green"></span> Cart</a></li>
+        <li><a href="/user/show_cart"><div class="cart_count"><span style="font-size: 15px; color: red"><%=cart_count %></span></div><span class="glyphicon glyphicon-shopping-cart green"></span> Cart</a></li>
       </ul>
     </div>
   </div>
