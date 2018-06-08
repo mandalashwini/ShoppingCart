@@ -22,8 +22,10 @@ class ProductCategoriesController < ApplicationController
       end
 
       def edit
-          render layout: "admin/adminDashboard"
+       
           @ProductCategory=ProductCategory.find(params[:id])
+             render layout: "admin/adminDashboard"
+              @ProductCategory
       end
     
       def update
