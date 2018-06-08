@@ -13,8 +13,8 @@
     <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
         
-        <li><a><span>Welcome <%= current_user.firstname%></span></a></li>
-        <li><a href="/products/index">Home</a></li>
+        <li><a><span class="glyphicon glyphicon-user green"></span><span>Welcome <%= current_user.firstname%></span></a></li>
+        <li><a href="/products/index"><span class="glyphicon glyphicon-home green"></span>Home</a></li>
         <li><a href="/users/edit"><span>Edit</span></a></li>
         <li><a href="/users/sign_out" onclick="return confirm('Are you sure?')"><span>Logout</span></a></li>
       </ul>

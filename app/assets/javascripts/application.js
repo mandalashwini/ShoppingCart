@@ -65,4 +65,23 @@ $(document).ready(function(){
 		}
 	});
 })
+
+//cart count
+/*$('.show-cart-count').click(function(){
+		//#alert("hello");
+		$.ajax({
+		url: "/user/show_cart",
+		type: "get",
+		datatype: "html",
+		success: function(result){
+			alert("priya");
+
+
+		},
+		error: function(argument) {
+		alert("ashu")
+
+		}
+	});
+})	*/
 });

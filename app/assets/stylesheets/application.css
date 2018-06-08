@@ -174,3 +174,8 @@ input[type=text], input[type=password], input[type=email]{
     color: #5cb85b;
 }
 
+.cart_count{
+    margin-top: -21px;
+    margin-left: 6px;
+   
+}
