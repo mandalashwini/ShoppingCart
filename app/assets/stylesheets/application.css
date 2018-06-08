@@ -170,3 +170,7 @@ input[type=text], input[type=password], input[type=email]{
 .dropdown:hover .dropdown-content {
     display: block;
 }
+.green{
+    color: #5cb85b;
+}
+
