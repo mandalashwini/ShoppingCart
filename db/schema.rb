@@ -1,18 +1,23 @@
-ActiveRecord::Schema.define(version: 20180606080848) do
-  enable_extension 'plpgsql'
-  create_table 'ar_internal_metadata', primary_key: 'key', force: :cascade do |t|
-    t.string   'value'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+
+ActiveRecord::Schema.define(version: 20180606081401) do
+
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "ar_internal_metadata", primary_key: "key", force: :cascade do |t|
+    t.string   "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'carts', force: :cascade do |t|
-    t.date     'buy_date'
-    t.integer  'quantity'
-    t.float    'price'
-    t.datetime 'created_at',          null: false
-    t.datetime 'updated_at',          null: false
-    t.integer  'product_category_id'
+  create_table "carts", force: :cascade do |t|
+    t.date     "buy_date"
+    t.integer  "quantity"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "product_category_id"
+    t.float    "net_price"
   end
 
   add_index 'carts', ['product_category_id'], name: 'index_carts_on_product_category_id', using: :btree

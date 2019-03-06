@@ -15,10 +15,10 @@
 //= require turbolinks
 //= require_tree
 $(document).ready(function(){
-	setTimeout(function() {
+	/*setTimeout(function() {
     $('.notice').slideUp(200);
     $('.alert').slideUp(200);
-  }, 3000);
+  }, 3000);*/
 
 	//New product
 	$('#new_product_id').click(function(){
@@ -65,4 +65,23 @@ $(document).ready(function(){
 		}
 	});
 })
+
+//cart count
+/*$('.show-cart-count').click(function(){
+		//#alert("hello");
+		$.ajax({
+		url: "/user/show_cart",
+		type: "get",
+		datatype: "html",
+		success: function(result){
+			alert("priya");
+
+
+		},
+		error: function(argument) {
+		alert("ashu")
+
+		}
+	});
+})	*/
 });

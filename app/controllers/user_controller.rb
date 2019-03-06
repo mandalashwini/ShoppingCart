@@ -7,6 +7,7 @@ class UserController < ApplicationController
   
   def buyCategoryList
      @product=Product.find(params[:id])
+     # @product= Kaminari.paginate_array(@product).page(params[:page]).per(2)
   end
 
    def show_cart
@@ -14,7 +15,6 @@ class UserController < ApplicationController
     end
 
     def search_result
-      puts "12345"
         if params[:search] == ""
           flash[:notice]="Search not found!!"
           redirect_to homepage_path
@@ -22,6 +22,7 @@ class UserController < ApplicationController
            @categories=SearchOperations.searchCategories(params[:search].downcase)
            if @categories.present?
               @categories
+               #= @categories.page(params[:page]).per(3)
            else
               flash[:notice]="Search not found!!"
               redirect_to homepage_path
