@@ -2,17 +2,17 @@
 	
 <% @categories.each do |categoryObj|%>
 	<% if categoryObj.quantity && categoryObj.quantity.to_i > 0 %>
-	             	 <div class="col-sm-12 col-md-3 col-lg-4">
-	             		<div class="well">
-	                                <h3><%= categoryObj.name %></h3>
-	                                <p><% categoryObj.images.each do |c|%>
-                                	<%= image_tag(c.thumb.url) %>
-                                	<% end %>
-	                                <b>Price</b> <%= categoryObj.price %>
-	                                <%= link_to 'Add to Cart',buy_item_path(categoryObj)%></p>            
-
-	            	     </div>
-	       			</div>	
-	    <% end %>   
+	  <div class="col-sm-12 col-md-3 col-lg-4">
+	  	<div class="well">
+	      <h3><%= categoryObj.name %></h3>
+	      <% categoryObj.images.each do |c|%>
+    	   	<%= image_tag(c.thumb.url) %>
+				<% end %>
+	      <p>Price <%= categoryObj.price %></p>
+	      <p>Description <%= categoryObj.description %></p>
+	      <p><%= link_to 'Add to Cart',buy_item_path(categoryObj)%></p>
+	    </div>
+	  </div>
+	<% end %>
 <% end %>
 </div>

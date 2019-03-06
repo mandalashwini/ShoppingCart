@@ -70,7 +70,6 @@ class ProductCategoriesController < ApplicationController
         else
             if @quantity > @product_category.quantity
               flash[:notice]="to many orders.."
-   
               redirect_to :back
             else
                 @product_category.quantity = (@product_category.quantity.to_i) - @quantity
